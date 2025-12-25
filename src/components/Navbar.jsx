@@ -1,10 +1,14 @@
 import img from "../../public/searchImg/searchicon.png";
-import Carts from "./Carts";
+import Carts from "../pages/Carts";
 import restaurants from "../data/Data";
-import { useEffect, useState } from "react";
-// console.log(restaurants[0].menu[0].name);
+import { useContext, useEffect, useState } from "react";
+import UserContext from "../context/allfoodContext/createContext";
 
 export default function Navbar() {
+  //* userContext data
+  let result = useContext(UserContext);
+
+  // States Varible
   let [menuItems, setMenuItems] = useState([]);
   let [inputValue, setInput] = useState("");
   let [searchedValue, setSearchedValue] = useState([]);
@@ -34,16 +38,15 @@ export default function Navbar() {
     }
   };
   let [selectedItem, setSelectedItem] = useState(null);
- 
 
   return (
-    <div className="flex relative flex-col">
+    <div className="flex relative flex-col w-100">
       <div className=" mt-5 mx-2 relative rounded shadow-lg ">
         <img src={img} alt="" className="inline w-9 p-1 absolute" />
         <input
           type="text"
           placeholder="search Restaurant . . ."
-          className=" ml-10 h-10 w-80 pl-5"
+          className=" ml-10 h-10 w-70 pl-5"
           onChange={(e) => inpVal(e.target.value)}
           value={inputValue}
         />

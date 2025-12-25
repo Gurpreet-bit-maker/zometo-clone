@@ -1,11 +1,18 @@
 import { styled } from "@mui/material/styles";
 import Badge, { badgeClasses } from "@mui/material/Badge";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import CartContext from "../context/CartsContext/CartCreateContext";
 
 export default function Carts() {
-  let [cartCounts, setCartCounts] = useState(9);
+  let { cartsItems } = useContext(CartContext);
 
+  useEffect(() => {
+   
+    console.log(cartsItems);
+  },[cartsItems]);
+
+  let [cartCounts, setCartCounts] = useState(0);
   const CartBadge = styled(Badge)`
     & .${badgeClasses.badge} {
       top: -12px;
@@ -20,7 +27,7 @@ export default function Carts() {
     >
       <div className="relative">
         <CartBadge
-          badgeContent={cartCounts}
+          badgeContent={cartsItems.length}
           color="primary"
           sx={{
             width: { xs: 2 },

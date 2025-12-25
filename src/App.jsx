@@ -10,17 +10,33 @@ import {
 } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Cartsitems from "./pages/CartsItems";
+import AllFood from "./context/allfoodContext/AllFoodData";
+import Homepage from "./pages/Homepage";
+import SingleCard from "./pages/SingleCard";
+import CartsData from "./context/CartsContext/CartsContext";
+import Menu_CardNotReset from "./context/AddedNotReload/CardNotReset";
 
 function App() {
   return (
     <>
-      <BrowserRouter>
-      <Navbar/>
-        <Routes>
-          {/* <Route path="/" element={<Navbar />} /> */}
-          <Route path="/CartsItems" element={<Cartsitems />} />
-        </Routes>
-      </BrowserRouter>
+      {/* <Route path="/" element={<Navbar />} /> */}
+      <Menu_CardNotReset>
+        <CartsData>
+          <AllFood>
+            {" "}
+            {/* fetch data for all card visible in home card*/}
+            <BrowserRouter>
+              <Navbar />
+
+              <Routes>
+                <Route path="/" element={<Homepage />} />
+                <Route path="/CartsItems" element={<Cartsitems />} />
+                <Route path="/RestaurentDetail" element={<SingleCard />} />
+              </Routes>
+            </BrowserRouter>
+          </AllFood>
+        </CartsData>
+      </Menu_CardNotReset>
       {/* <Route path="/" element={<Restaurants />} /> */}
       {/* <Route path="/restaurants/:id" element={<RestaurantCard />} /> */}
     </>
