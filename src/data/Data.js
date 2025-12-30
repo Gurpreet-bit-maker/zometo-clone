@@ -8,9 +8,9 @@ let restaurants = [
     image: "/public/RestroImg/image1.png",
     added: false,
     menu: [
-      { id: 301, name: "Chicken Biryani", price: 180 },
-      { id: 302, name: "Mutton Biryani", price: 250 },
-      { id: 303, name: "Veg Biryani", price: 150 },
+      { id: 301, name: "Chicken Biryani", price: 180, added: false },
+      { id: 302, name: "Mutton Biryani", price: 250, added: false },
+      { id: 303, name: "Veg Biryani", price: 150, added: false },
     ],
   },
   {
@@ -23,9 +23,9 @@ let restaurants = [
     added: false,
 
     menu: [
-      { id: 201, name: "Margherita Pizza", price: 200 },
-      { id: 202, name: "Pepperoni Pizza", price: 250 },
-      { id: 203, name: "Veg Supreme Pizza", price: 230 },
+      { id: 201, name: "Margherita Pizza", price: 200, added: false },
+      { id: 202, name: "Pepperoni Pizza", price: 250, added: false },
+      { id: 203, name: "Veg Supreme Pizza", price: 230, added: false },
     ],
   },
   {
@@ -38,9 +38,9 @@ let restaurants = [
     added: false,
 
     menu: [
-      { id: 501, name: "Chocolate Cake", price: 120 },
-      { id: 502, name: "Ice Cream Sundae", price: 100 },
-      { id: 503, name: "Gulab Jamun", price: 80 },
+      { id: 501, name: "Chocolate Cake", price: 120, added: false },
+      { id: 502, name: "Ice Cream Sundae", price: 100, added: false },
+      { id: 503, name: "Gulab Jamun", price: 80, added: false },
     ],
   },
   {
@@ -53,9 +53,9 @@ let restaurants = [
     added: false,
 
     menu: [
-      { id: 101, name: "Cheese Burger", price: 120 },
-      { id: 102, name: "Veggie Burger", price: 100 },
-      { id: 103, name: "Chicken Burger", price: 150 },
+      { id: 101, name: "Cheese Burger", price: 120, added: false },
+      { id: 102, name: "Veggie Burger", price: 100, added: false },
+      { id: 103, name: "Chicken Burger", price: 150, added: false },
     ],
   },
 ];

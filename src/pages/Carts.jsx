@@ -5,12 +5,11 @@ import { NavLink } from "react-router-dom";
 import CartContext from "../context/CartsContext/CartCreateContext";
 
 export default function Carts() {
-  let { cartsItems } = useContext(CartContext);
+  let {cartsItems} = useContext(CartContext);
 
   useEffect(() => {
-   
     console.log(cartsItems);
-  },[cartsItems]);
+  }, [cartsItems]);
 
   let [cartCounts, setCartCounts] = useState(0);
   const CartBadge = styled(Badge)`

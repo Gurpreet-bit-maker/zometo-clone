@@ -1,39 +1,63 @@
 import { useContext, useEffect, useState } from "react";
 import CartContext from "../context/CartsContext/CartCreateContext";
-import resetnotCard from "../context/AddedNotReload/resetnot";
-//! pending index prop from menubtn
+import restaurants from "../data/Data";
+// import resetnotCard from "../context/AddedNotReload/resetnot";
+import UserContext from "../context//allfoodContext/createContext";
+
+//
 export default function Cartbtn({ item, index }) {
-  let { cartsItems, setcarts } = useContext(CartContext);
+  let data = useContext(UserContext);
 
-  // let {added, setAdded} = useContext(resetnotCard);
-  let [add, setAdded] = useState(false);
-  // let [cartAdded, setCartAdded] = useState(false);
+  let { cartsItems, setcarts, addedData, setAddedData } =
+    useContext(CartContext);
+  // let [secondAlldata, setsecondAlldata] = useState([]);
+  // let { added, setAdded } = useContext(resetnotCard);
 
-  let clickbtn = () => {
-    setAdded(!add);
+  // let result = item.added === false;
+  // console.log(result);
 
-    if (!add) {
-      setcarts([
-        ...cartsItems,
-        { name: item.name, itemId: index, added: item.added },
-      ]);
-      console.log(index);
-    } else {
-     
+  let MenuItems = [];
 
-      // let deletedItem = cartsItems.filter((el, i) => el.itemId !== index);
-    }
-  };
   // let clickbtn = () => {
-
+  //   // setcarts((prev) => [...prev, { item }]);
+  //   if (result) {
+  //     item.added = true;
+  //   }
+  //   return (item.added = false);
   // };
+
+  // useEffect(() => {
+  //   if (result) {
+  //     item.added = true;
+  //     console.log(item);
+  //   } if (!result) {
+  //     item.added = false;
+  //     console.log(item);
+  //   }
+  // },[result]);
   useEffect(() => {
     console.log(cartsItems);
   });
 
+  let isAdded = cartsItems.some((key) => key.orderId === index);
+  console.log(isAdded);
+
+  let clickbtn = () => {
+    if (!isAdded) {
+      setcarts([...cartsItems, { name: item.name, orderId: index, qty: null }]);
+    } else {
+      let deleted = cartsItems.filter((element) => element.orderId !== index);
+      console.log(deleted);
+      setcarts(deleted);
+    }
+  };
+
+  console.log(item);
+  
+
   return (
     <div className="flex gap-x-1 ">
-      {add ? (
+      {isAdded ? (
         <button
           key={index}
           onClick={clickbtn}
@@ -54,3 +78,12 @@ export default function Cartbtn({ item, index }) {
     </div>
   );
 }
+
+// let itemAdded = cartsItems.some((d) => d.added);
+// let itemA = cartsItems.some((d) => console.log(d.price));
+
+// console.log(itemAdded == false);
+
+// let addedItem = data.filter((item) => {
+//   item.menu.filter((el) => el.added !== );
+// });

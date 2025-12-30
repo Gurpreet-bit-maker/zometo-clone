@@ -8,11 +8,23 @@ export default function Homepage() {
   let data = useContext(UserContext);
   console.log(data);
 
-  // let [userData, setUserData] = useState([]);
+  let [userData, setUserData] = useState([]);
+
+
+  
+
+  // useEffect(() => {
+  //  data.map((item) =>
+  // {
+  //   item.menu.map((el) =>
+  //   {
+  //     console.log(el.name);
+
+  //   })
+  // })
+  // });
 
   // let { userClick, setuserClick } = useContext(UserContext);
-
-
 
   //   Restaurant img
 
@@ -23,11 +35,7 @@ export default function Homepage() {
       <div className=" flex  flex-col items-center">
         {data.map((item, index) => {
           return (
-            <Link
-              to="/RestaurentDetail"
-              key={index}
-             state={{item}}
-            >
+            <Link to="/RestaurentDetail" key={index} state={{ item }}>
               <div className=" border w-80 mt-2 py-5 flex flex-col justify-center items-center">
                 <h2 className=" mb-2 text-[1.4rem]">{item.name}</h2>
                 <img

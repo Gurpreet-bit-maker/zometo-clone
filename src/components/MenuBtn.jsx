@@ -7,8 +7,6 @@ export default function MenuBtn({ item, setToggle, MenuToggle }) {
       setToggle(!MenuToggle);
       
     }, 500);
-    console.log("timmer");
-    
   };
 
   return (
