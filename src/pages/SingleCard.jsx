@@ -8,73 +8,65 @@ import CartContext from "../context/CartsContext/CartCreateContext";
 export default function SingleCard() {
   let { state } = useLocation();
   console.log(state);
+
   let { cartsItems, setcarts, addedData, setAddedData } =
     useContext(CartContext);
-  // console.log(state.item.id);
 
   let { MenuToggle, setToggle } = useContext(resetnotCard);
 
-  // let isAdded = state.item.menu.some((d) => d.added == false);
-  // console.log(isAdded);
-
-  // setadd(!add);
-  // if (!add) {
-  //   setcarts([{ ...item, added: !item.added }]);
-  // } else {
-  //   let deleted = cartsItems.filter((d) => d.id !== item.id);
-  //   setcarts(deleted);
-  // }
   let [OriginalData, setData] = useState(
     state.item.menu.map((item, i) => {
       return { ...item, itemId: i };
     })
   );
 
-  let isAdded;
-
   // console.log(isAdded);
+  // let [isAdded, setAdded] = useState(false);
+
+  useEffect(() => {
+    console.log(OriginalData);
+
+    let addedIncarts = OriginalData.filter((d) => d.added);
+    setcarts(addedIncarts)
+    console.log(addedIncarts);
+    
+  },[OriginalData]);
+
+  let btnAdded = OriginalData.some((d) => d.added == false);
 
   let addedItem = (item, index) => {
-    isAdded = OriginalData.some((element) => {
-      element.itemId === index;
-    });
-    
-    // let isAdded = OriginalData.some((d) => d.itemId === index);
-    // console.log(isAdded);
-    // console.log(isAdded);
+    if (btnAdded) {
+      setData(
+        OriginalData.map((item, i) => {
+          return item.itemId == index
+            ? { ...item, added: !item.added }
+            : { ...item };
+        })
+      );
+      // console.log(OriginalData);
 
-    if (1) {
-      // let changed = OriginalData.map((el) => {
-        //   return el.itemId == 2 ? { ...el, added: true } : el;
-        // });
-        let a = OriginalData.map((el) => {
-        return el.itemId === index ? { ...el, added: true } : el;
-      });
-      console.log(a);
-      // setData(changed);
-      // setData((prev) => {
-        //   prev.itemId === index ? { ...prev, added: true } : prev;
-        // });
-        // setcarts()
-      console.log(item, index);
+      // setcarts([{ ...item, added: !item.added, indexNum: index }]);
+      // setcarts(addedIncarts);
     }
+
+    // if (1) {
+    //   let a = OriginalData.map((el) => {
+    //     return el.itemId === index ? { ...el, added: true } : el;
+    //   });
+    //   console.log(a);
+    //   console.log(item, index);
+    // }
   };
-  useEffect(() => {
-    console.log(isAdded);
-    console.log(OriginalData);
-  });
-  // let isAdded = cartsItems.some((d) => d.added === false);
-  // console.log(isAdded);
 
   // let addToCart = () => {
-  //   let array = [];
-  //   if (!isAdded) {
-  //     state.item.menu.map((item) => {
-  //       array.push(item);
-  //     });
-  //     console.log("added");
-  //   }
-  //   setcarts(array);
+  //   // let array = [];
+  //   // if (!isAdded) {
+  //   //   state.item.menu.map((item) => {
+  //   //     array.push(item);
+  //   //   });
+  //   //   console.log("added");
+  //   // }
+  //   // setcarts(array);
   // };
 
   return (
@@ -105,9 +97,8 @@ export default function SingleCard() {
                     onClick={() => addedItem(item, index)}
                     className="border"
                   >
-                    {item.added ? "Added" : "add"}
+                    {btnAdded ? "Add" : "added"}
                   </button>
-                  <button className="border">Order</button>
                 </div>
               );
             })}

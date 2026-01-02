@@ -1,11 +1,13 @@
 import Rating from "@mui/material/Rating";
 import Button from "@mui/material/Button";
+import { useState } from "react";
 
 export default function MenuBtn({ item, setToggle, MenuToggle }) {
+  let [isAdded, setAdded] = useState(false); //* this is state for pass in single card as a prop
+
   let loader = () => {
     setTimeout(() => {
       setToggle(!MenuToggle);
-      
     }, 500);
   };
 

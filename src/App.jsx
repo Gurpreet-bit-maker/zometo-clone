@@ -15,6 +15,8 @@ import Homepage from "./pages/Homepage";
 import SingleCard from "./pages/SingleCard";
 import CartsData from "./context/CartsContext/CartsContext";
 import Menu_CardNotReset from "./context/AddedNotReload/CardNotReset";
+import Indining from "./pages/Indining";
+import Booking from "./pages/Booking";
 
 function App() {
   return (
@@ -32,6 +34,8 @@ function App() {
                 <Route path="/" element={<Homepage />} />
                 <Route path="/CartsItems" element={<Cartsitems />} />
                 <Route path="/RestaurentDetail" element={<SingleCard />} />
+                <Route path="/Indining" element={<Indining />} />
+                <Route path="/Booking" element={<Booking />} />
               </Routes>
             </BrowserRouter>
           </AllFood>
