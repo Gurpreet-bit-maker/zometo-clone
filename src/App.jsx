@@ -34,10 +34,13 @@ function App() {
                 <Route path="/" element={<Homepage />} />
                 <Route path="/CartsItems" element={<Cartsitems />} />
                 <Route path="/RestaurentDetail" element={<SingleCard />} />
-                <Route path="/Indining" element={<Indining />} />
+
+                <Route path="/food" element={<Indining />} />
+
                 <Route path="/Booking" element={<Booking />} />
               </Routes>
             </BrowserRouter>
+            
           </AllFood>
         </CartsData>
       </Menu_CardNotReset>

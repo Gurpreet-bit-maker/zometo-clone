@@ -20,7 +20,6 @@ let CartsData = ({ children }) => {
   );
 
   let [cartsItems, setcarts] = useState([]);
-  // let [addedData, setAddedData] = useState([]);
   let [added, setAdded] = useState(false);
 
   // setcarts(restaurants)
@@ -32,7 +31,15 @@ let CartsData = ({ children }) => {
 
   return (
     <CartContext.Provider
-      value={{ cartsItems, setcarts, added, setAdded, DiningRestaurents, Booking }}
+      value={{
+        cartsItems,
+        setcarts,
+        added,
+        setAdded,
+        DiningRestaurents,
+        setD_Res,
+        Booking,
+      }}
     >
       {children}
     </CartContext.Provider>

@@ -24,7 +24,7 @@ export default function Homepage() {
       <div className=" flex  flex-col items-center">
         {/*//* Catogiry */}
         <div className="flex gap-x-2">
-          <Link to="/Indining">
+          <Link to="/food">
             <div className="bg-blue-300 px-2">Dinning</div>
           </Link>
           <Link to="/Booking">

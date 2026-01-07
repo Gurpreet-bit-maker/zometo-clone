@@ -7,7 +7,7 @@ const restaurants = [
     location: "Hyderabad, India",
     rating: 4.8,
     discount: 180,
-    image: "/public/RestroImg/biryani.png",
+    image: "/public/RestroImg/image1.png",
     added: false,
     menu: [
       { id: 101, name: "Chicken Biryani", price: 180, added: false },
@@ -22,7 +22,7 @@ const restaurants = [
     location: "Delhi, India",
     rating: 4.6,
     discount: 200,
-    image: "/public/RestroImg/tandoor.png",
+    image: "/public/RestroImg/tandoor.jpg",
     added: false,
     menu: [
       { id: 104, name: "Butter Chicken", price: 220, added: false },
@@ -36,7 +36,7 @@ const restaurants = [
     location: "Chennai, India",
     rating: 4.5,
     discount: 150,
-    image: "/public/RestroImg/south.png",
+    image: "/public/RestroImg/southind.jpg",
     added: false,
     menu: [
       { id: 106, name: "Masala Dosa", price: 90, added: false },
