@@ -1,8 +1,7 @@
 import CartContext from "../context/CartsContext/CartCreateContext";
 import { useContext, useEffect, useState } from "react";
 
-
-export default function MenuItemBtn({ menuName }) {
+export default function MenuItemBtn({ i }) {
   let { DiningRestaurents, setD_Res, setcarts, cartsItems } =
     useContext(CartContext);
 
@@ -20,11 +19,15 @@ export default function MenuItemBtn({ menuName }) {
   //     })
   //   );
   // };
-  console.log(menuName);
+console.log(i)
 
   return (
-    <div>
-      <button className="border px-2 bg-red-500 text-white">Details</button>
+    <div key={i}>
+      {DiningRestaurents.added ? (
+        <button  className="border px-2 bg-red-500 text-white">Booked</button>
+      ) : (
+        <button  className="border px-2 bg-red-500 text-white">Details</button>
+      )}
     </div>
   );
 }

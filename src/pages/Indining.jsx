@@ -160,7 +160,7 @@ export default function Indining() {
                     );
                   })} */}
                   <Link to="/diningPage" state={item}>
-                    <MenuItemBtn />
+                    <MenuItemBtn i={index}/>
                   </Link>
                 </div>
               );
