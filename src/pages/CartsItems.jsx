@@ -5,8 +5,6 @@ import { useEffect } from "react";
 export default function Cartsitems() {
   let { cartsItems, DiningRestaurents, setcarts } = useContext(CartContext);
 
-
-  
   // ! very importand logic
   let cartAddition = (i) => {
     setcarts((prev) =>
@@ -24,14 +22,17 @@ export default function Cartsitems() {
     );
   };
 
+
+  // console.log(DiningRestaurents);
+
   useEffect(() => {
-    console.log(cartsItems);
-  }, [cartsItems]);
+    console.log(DiningRestaurents);
+  }, []);
 
   return (
     <div className="bg-gray-300 border h-50">
       <h1 className="font-bold font-mono text-center">Cart items</h1>
-      {/* {cartsItems.map((item, index) => {
+      {DiningRestaurents.map((item, index) => {
         return item.menu.map((m, i) => {
           {
             if (m.added) {
@@ -56,8 +57,8 @@ export default function Cartsitems() {
             }
           }
         });
-      })} */}
-      {cartsItems.map((e, i) => {
+      })}
+      {/* {cartsItems.map((e, i) => {
         return (
           <div className="flex justify-around" key={i}>
             <p>{e.name}</p>
@@ -78,7 +79,7 @@ export default function Cartsitems() {
             </div>
           </div>
         );
-      })}
+      })} */}
     </div>
   );
 }

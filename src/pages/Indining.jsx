@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import CartContext from "../context/CartsContext/CartCreateContext";
 import MenuItemBtn from "./MenuItemBtn";
+import { Link } from "react-router-dom";
 
 export default function Indining() {
   let { DiningRestaurents } = useContext(CartContext);
@@ -96,6 +97,7 @@ export default function Indining() {
                   className=" border w-80 mt-2 py-5 flex flex-col justify-center items-center"
                   key={index}
                 >
+                  <p className="bg-pink-400 px-2 text-white">Highrating</p>
                   <h1 className="mb-2 text-[1.4rem]">{item.name}</h1>
                   <img
                     className="w-60 h-50 rounded-2xl"
@@ -103,9 +105,9 @@ export default function Indining() {
                     alt=""
                   />
 
-                  <div className="flex justify-between">
-                    <p>{item.rating}</p>
-                    <p className="bg-pink-400 px-2 text-white">Highrating</p>
+                  <div className="flex justify-between flex-col">
+                    <p className="text-center">{item.rating}</p>
+                    <MenuItemBtn />
                   </div>
                 </div>
               );
@@ -118,6 +120,7 @@ export default function Indining() {
                   className=" border w-80 mt-2 py-5 flex flex-col justify-center items-center"
                   key={index}
                 >
+                  <p className="bg-yellow-400 px-2 text-white">LowPrice</p>
                   <h1 className="mb-2 text-[1.4rem]">{item.name}</h1>
                   <img
                     className="w-60 h-50 rounded-2xl"
@@ -125,9 +128,9 @@ export default function Indining() {
                     alt=""
                   />
 
-                  <div className="flex justify-between">
-                    <p>{item.rating}</p>
-                    <p className="bg-yellow-400 px-2 text-white">LowPrice</p>
+                  <div className="flex justify-between flex-col">
+                    <p className="text-center">{item.rating}</p>
+                    <MenuItemBtn />
                   </div>
                 </div>
               );
@@ -149,13 +152,16 @@ export default function Indining() {
                     alt=""
                   />
                   <p>{item.rating}</p>
-                  {item.menu.map((menuName, i) => {
+                  {/* {item.menu.map((menuName, i) => {
                     return (
                       <div key={i}>
                         <MenuItemBtn menuName={menuName} index={i} />
                       </div>
                     );
-                  })}
+                  })} */}
+                  <Link to="/diningPage" state={item}>
+                    <MenuItemBtn />
+                  </Link>
                 </div>
               );
             })
