@@ -5,12 +5,12 @@ import { Link } from "react-router-dom";
 
 export default function Indining() {
   let { DiningRestaurents } = useContext(CartContext);
-  // console.log(DiningRestaurents);
-
   // ! note this logic
   let [filterValue, setvalue] = useState([]);
   let [Rating, setRating] = useState([]);
   let [LessPrice, setLessPrice] = useState([]);
+
+  // console.log(LessPrice)
 
   let filterFunc = (e) => {
     if (filterValue.includes(e.target.value)) {
@@ -130,7 +130,7 @@ export default function Indining() {
 
                   <div className="flex justify-between flex-col">
                     <p className="text-center">{item.rating}</p>
-                    <MenuItemBtn />
+                    <MenuItemBtn lowBookedBtn={item.added} />
                   </div>
                 </div>
               );
@@ -160,7 +160,7 @@ export default function Indining() {
                     );
                   })} */}
                   <Link to="/diningPage" state={item}>
-                    <MenuItemBtn i={index}/>
+                    <MenuItemBtn i={index} BookingBtnAdded={item.added} />
                   </Link>
                 </div>
               );

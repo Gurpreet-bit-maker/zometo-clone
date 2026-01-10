@@ -13,7 +13,18 @@ export default function DiningPage() {
   let [covers, setCovers] = useState(0);
   //! iss data ko dummy data for conditiona check k liye rkhengay.
   let RestraurentState = result.state;
-  console.log(RestraurentState);
+
+  let _12HoursClock = {
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hours12: true,
+  };
+
+  let time = new Date().toLocaleString("en-US", _12HoursClock);
+  let todayDate = Date().slice(4, 15).split(" ").join("-");
+  // console.log(todayDate);
+  // console.log(time);
 
   // * ui
   const [state, setState] = React.useState({
@@ -31,6 +42,8 @@ export default function DiningPage() {
             ? {
                 ...m,
                 added: true,
+                bookingTime: time,
+                bookingDate: todayDate,
                 ...(covers >= 5
                   ? { ds: "20%", cover: covers }
                   : { ds: "10%", cover: covers }),
@@ -91,9 +104,15 @@ export default function DiningPage() {
         <div className="mt-5">
           {RestraurentState.menu.map((menuName, index) => {
             return (
-              <ul className=" flex  flex-col justify-center items-center  my-4" key={index}>
+              <ul
+                className=" flex  flex-col justify-center items-center  my-4"
+                key={index}
+              >
                 <li className="tracking-wide text-lg bg-gray-300 w-auto px-2 ">
-                  {menuName.name.toLowerCase()}  <span className="text-lg ml-2 underline font-bold">rs.{menuName.price}</span>
+                  {menuName.name.toLowerCase()}{" "}
+                  <span className="text-lg ml-2 underline font-bold">
+                    rs.{menuName.price}
+                  </span>
                 </li>
               </ul>
             );
@@ -150,7 +169,10 @@ export default function DiningPage() {
       <div className="flex gap-x-4 flex-wrap mt-2">
         {DiningRestaurents.map((m) => {
           return m.added ? (
-            <div key={m.id} className="border bg-gray-300 rounded-sm shadow-lg text-gray-700 py-2 pl-2 pr-5">
+            <div
+              key={m.id}
+              className="border bg-gray-300 rounded-sm shadow-lg text-gray-700 py-2 pl-2 pr-5"
+            >
               <h2 className="text-blue-500">{m.name}</h2>
               <p>Ratings {m.rating}</p>
               <p>covers: {m.cover}</p>
