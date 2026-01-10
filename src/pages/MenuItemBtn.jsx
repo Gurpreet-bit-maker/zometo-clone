@@ -5,6 +5,7 @@ export default function MenuItemBtn({ i }) {
   let { DiningRestaurents, setD_Res, setcarts, cartsItems } =
     useContext(CartContext);
 
+    console.log()
   // let menuItem = (i) => {
   //   console.log(i);
 
