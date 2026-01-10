@@ -30,7 +30,7 @@ export default function Homepage() {
           <Link to="/Booking">
             <div className="bg-blue-300 px-2">Booking</div>
           </Link>
-          <Link>
+          <Link to="/take-out">
             <div className="bg-blue-300 px-2">Take Out</div>
           </Link>
         </div>

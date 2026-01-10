@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
-import CartContext from "../context/CartsContext/CartCreateContext";
-import MenuItemBtn from "./MenuItemBtn";
+import CartContext from "../../context/CartsContext/CartCreateContext";
+import MenuItemBtn from "../MenuItemBtn";
 import { Link } from "react-router-dom";
 
 export default function Indining() {

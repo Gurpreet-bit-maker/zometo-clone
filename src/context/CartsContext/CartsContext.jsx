@@ -19,6 +19,14 @@ let CartsData = ({ children }) => {
     })
   );
 
+  let [onlineOrders, setO_Res] = useState(
+    restaurants.filter((item) => {
+      if (item.category == "online") {
+        return { ...item };
+      }
+    })
+  );
+
   let [cartsItems, setcarts] = useState([]);
   let [added, setAdded] = useState(false);
 
@@ -39,6 +47,8 @@ let CartsData = ({ children }) => {
         DiningRestaurents,
         setD_Res,
         Booking,
+        onlineOrders,
+        setO_Res,
       }}
     >
       {children}

@@ -15,9 +15,11 @@ import Homepage from "./pages/Homepage";
 import SingleCard from "./pages/SingleCard";
 import CartsData from "./context/CartsContext/CartsContext";
 import Menu_CardNotReset from "./context/AddedNotReload/CardNotReset";
-import Indining from "./pages/Indining";
+import Indining from "./pages/Food-Obtions/Indining";
 import Booking from "./pages/Booking";
-import DiningPage from "./pages/DiningPage"
+import DiningPage from "./pages/Food-Obtions/DiningPage";
+import TakeOutPerent from "./pages/Food-Obtions/TakeOutPerent";
+import TakeOutMenu from "./pages/Food-Obtions/TakeOutMenu";
 
 function App() {
   return (
@@ -35,15 +37,17 @@ function App() {
                 <Route path="/" element={<Homepage />} />
                 <Route path="/CartsItems" element={<Cartsitems />} />
                 <Route path="/RestaurentDetail" element={<SingleCard />} />
-
+                {/* Dining page Routes */}
                 <Route path="/food" element={<Indining />} />
-                  <Route path="/diningPage" element={<DiningPage/>}/>
-                
+                <Route path="/diningPage" element={<DiningPage />} />
+                {/* Online Orders page Routes */}
+                <Route path="/take-out" element={<TakeOutPerent />} />
+                <Route path="/menuItems" element={<TakeOutMenu />} />
+
 
                 <Route path="/Booking" element={<Booking />} />
               </Routes>
             </BrowserRouter>
-            
           </AllFood>
         </CartsData>
       </Menu_CardNotReset>

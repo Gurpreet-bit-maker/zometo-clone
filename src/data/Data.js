@@ -85,9 +85,7 @@ const restaurants = [
     image: "/public/RestroImg/terrace.png",
     added: false,
     tableBooking: true,
-    menu: [
-      { id: 205, name: "BBQ Platter", price: 550, added: false },
-    ],
+    menu: [{ id: 205, name: "BBQ Platter", price: 550, added: false }],
   },
 
   // ================= ONLINE ORDER =================
@@ -98,9 +96,11 @@ const restaurants = [
     location: "Mumbai, India",
     rating: 4.7,
     discount: 200,
-    image: "/public/RestroImg/pizza.png",
+    image: "/public/online/pizza.jpg",
     added: false,
     deliveryTime: "30 mins",
+    description:
+    "Pizza Paradise is a well-known pizza restaurant located in Mumbai, India. Famous for its cheesy and flavorful pizzas, this place offers freshly baked pizzas made with premium ingredients. With a high customer rating and quick delivery, Pizza Paradise is a perfect choice for family meals, parties, and late-night pizza cravings.",
     menu: [
       { id: 301, name: "Margherita Pizza", price: 200, added: false },
       { id: 302, name: "Farmhouse Pizza", price: 260, added: false },
@@ -113,9 +113,11 @@ const restaurants = [
     location: "Delhi, India",
     rating: 4.5,
     discount: 150,
-    image: "/public/RestroImg/burger.png",
+    image: "/public/online/burgerkink.jpg",
     added: false,
     deliveryTime: "25 mins",
+    description:
+      "Burger King is a globally popular fast-food restaurant located in Delhi, India. Known for its flame-grilled burgers, crispy fries, and refreshing beverages, this outlet delivers great taste with consistent quality. It is an ideal option for quick meals, casual dining, and satisfying burger cravings with fast and reliable delivery.",
     menu: [
       { id: 303, name: "Cheese Burger", price: 120, added: false },
       { id: 304, name: "Chicken Burger", price: 150, added: false },
@@ -128,9 +130,11 @@ const restaurants = [
     location: "Noida, India",
     rating: 4.4,
     discount: 170,
-    image: "/public/RestroImg/chinese.png",
+    image: "/public/online/chines.jpeg",
     added: false,
     deliveryTime: "35 mins",
+    description:
+    "Chinese Wok is a popular restaurant in Noida, India, serving delicious and authentic Chinese cuisine. Known for its flavorful noodles, spicy Manchurian, and fresh ingredients, this restaurant is loved by Chinese food enthusiasts. With generous portions and timely delivery, it is a great choice for lunch and dinner orders.",
     menu: [
       { id: 305, name: "Hakka Noodles", price: 140, added: false },
       { id: 306, name: "Manchurian", price: 160, added: false },
@@ -145,7 +149,7 @@ const restaurants = [
     location: "Kolkata, India",
     rating: 4.9,
     discount: 120,
-    image: "/public/RestroImg/dessert.png",
+    image: "/public/online/kobby-mendez-q54Oxq44MZs-unsplash (1).jpg",
     added: false,
     deliveryTime: "20 mins",
     menu: [
