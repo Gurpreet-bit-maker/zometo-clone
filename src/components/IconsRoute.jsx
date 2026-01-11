@@ -28,7 +28,7 @@ export default function IconsRoute() {
   return (
     <div className="fixed bottom-12 left-35 border pr-2 rounded-lg flex gap-x-5">
       <Link to="/">
-        
+
         <Stack>
           <HomeIcon color="primary" sx={{ fontSize: "60px" }} />
         </Stack>
@@ -36,7 +36,7 @@ export default function IconsRoute() {
 
       <Link to="/ordered">
         <div className="relative pt-1">
-          <img className="w-14 h-13 " src="/public/icons/ordernew.png" alt="" />
+          <img className="w-14 h-13 " src="/icons/ordernew.png" alt="" />
           <div className="absolute top-[-5px] right-1 bg-red-500 px-2 rounded-lg">
             {ordered.length <= 0 ? null : ordered.length}
           </div>

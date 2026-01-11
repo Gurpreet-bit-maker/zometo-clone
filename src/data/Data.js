@@ -7,7 +7,7 @@ const restaurants = [
     location: "Hyderabad, India",
     rating: 4.8,
     discount: 180,
-    image: "/public/RestroImg/image1.png",
+    image: "/RestroImg/image1.png",
     added: false,
     menu: [
       { id: 101, name: "Chicken Biryani", price: 180, added: false },
@@ -22,7 +22,7 @@ const restaurants = [
     location: "Delhi, India",
     rating: 4.6,
     discount: 200,
-    image: "/public/RestroImg/tandoor.jpg",
+    image: "/RestroImg/tandoor.jpg",
     added: false,
     menu: [
       { id: 104, name: "Butter Chicken", price: 220, added: false },
@@ -36,7 +36,7 @@ const restaurants = [
     location: "Chennai, India",
     rating: 4.5,
     discount: 150,
-    image: "/public/RestroImg/southind.jpg",
+    image: "/RestroImg/southind.jpg",
     added: false,
     menu: [
       { id: 106, name: "Masala Dosa", price: 90, added: false },
@@ -52,7 +52,7 @@ const restaurants = [
     location: "Mumbai, India",
     rating: 4.9,
     discount: 300,
-    image: "/public/RestroImg/finedine.png",
+    image: "/RestroImg/finedine.png",
     added: false,
     tableBooking: true,
     menu: [
@@ -67,7 +67,7 @@ const restaurants = [
     location: "Bangalore, India",
     rating: 4.7,
     discount: 250,
-    image: "/public/RestroImg/lounge.png",
+    image: "/RestroImg/lounge.png",
     added: false,
     tableBooking: true,
     menu: [
@@ -82,7 +82,7 @@ const restaurants = [
     location: "Pune, India",
     rating: 4.6,
     discount: 220,
-    image: "/public/RestroImg/terrace.png",
+    image: "/RestroImg/terrace.png",
     added: false,
     tableBooking: true,
     menu: [{ id: 205, name: "BBQ Platter", price: 550, added: false }],
@@ -96,7 +96,7 @@ const restaurants = [
     location: "Mumbai, India",
     rating: 4.7,
     discount: 200,
-    image: "/public/online/pizza.jpg",
+    image: "/online/pizza.jpg",
     added: false,
     deliveryTime: "30 mins",
     description:
@@ -113,7 +113,7 @@ const restaurants = [
     location: "Delhi, India",
     rating: 4.5,
     discount: 150,
-    image: "/public/online/burgerkink.jpg",
+    image: "/online/burgerkink.jpg",
     added: false,
     deliveryTime: "25 mins",
     description:
@@ -130,7 +130,7 @@ const restaurants = [
     location: "Noida, India",
     rating: 4.4,
     discount: 170,
-    image: "/public/online/chines.jpeg",
+    image: "/online/chines.jpeg",
     added: false,
     deliveryTime: "35 mins",
     description:
@@ -149,7 +149,7 @@ const restaurants = [
     location: "Kolkata, India",
     rating: 4.9,
     discount: 120,
-    image: "/public/online/kobby-mendez-q54Oxq44MZs-unsplash (1).jpg",
+    image: "/online/kobby-mendez-q54Oxq44MZs-unsplash (1).jpg",
     added: false,
     deliveryTime: "20 mins",
     menu: [
