@@ -22,9 +22,6 @@ export default function Cartsitems() {
     );
   };
 
-
-  // console.log(DiningRestaurents);
-
   useEffect(() => {
     console.log(DiningRestaurents);
   }, []);

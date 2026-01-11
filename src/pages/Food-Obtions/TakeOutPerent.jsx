@@ -10,8 +10,8 @@ export default function TakeOutPerent() {
 
   return (
     <div>
-      <h1>Online Orders</h1>
-      <div>
+      <h1 className="text-center text-2xl tracking-wider mb-2">Online Orders</h1>
+      <div className="flex flex-col justify-center items-center">
         {onlineOrders.map((item, index) => {
           return (
             <div
@@ -20,10 +20,12 @@ export default function TakeOutPerent() {
             >
               <h1 className="mb-2 text-[1.4rem]">{item.name}</h1>
               <img className="w-60 h-50 rounded-2xl" src={item.image} alt="" />
-              <p>{item.rating}</p>
+              <p>Rating {item.rating}</p>
 
               <Link to="/menuItems" state={item}>
-               <button className="border bg-red-400 px-2 text-white">orders</button>
+                <button className="border bg-blue-400 py-1 px-3 text-sm text-shadow-lg tracking-wider rounded-sm text-white">
+                  Orders
+                </button>
               </Link>
             </div>
           );

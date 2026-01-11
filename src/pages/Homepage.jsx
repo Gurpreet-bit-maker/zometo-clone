@@ -19,7 +19,8 @@ export default function Homepage() {
 
   return (
     <div>
-      <h1 className="text-[2.2rem] text-center">Restaurants</h1>
+      <h1 className="text-[2.2rem] text-center relative">Restaurants</h1>
+      {/* booking logo */}
 
       <div className=" flex  flex-col items-center">
         {/*//* Catogiry */}
@@ -66,7 +67,7 @@ export default function Homepage() {
           </div>
         </div>
         {/* //* text */}
-        <div className=" px-5 relative  h-100   flex justify-center gap-y-2 items-center  ">
+        <div className=" px-5 relative  h-100 flex justify-center gap-y-2 items-center  ">
           <div className="text-center px-5">
             <h1 className="text-[#EF4F5F] text-2xl">
               Better food for more people
@@ -84,35 +85,10 @@ export default function Homepage() {
             />
           </div>
         </div>
-
-        {data.map((item, index) => {
-          return (
-            <Link
-              to="/RestaurentDetail"
-              key={index}
-              state={{ item }}
-              // isAdded={isAdded}
-              // setAdded={setAdded}
-            >
-              <div className=" border w-80 mt-2 py-5 flex flex-col justify-center items-center">
-                <h2 className=" mb-2 text-[1.4rem]">{item.name}</h2>
-                <img
-                  className="w-60 h-50 rounded-2xl"
-                  src={item.image}
-                  alt=""
-                />
-                {/* //! you should use component here for Ratings & btn  */}
-                <MenuBtn item={item} />
-              </div>
-            </Link>
-          );
-        })}
+        <div className="bg-pink-50 h-80 w-full">
+          <h1>hello world</h1>
+        </div>
       </div>
     </div>
   );
 }
-
-//   let [Restaurant, setRestaurantData] = useState([]);
-//   useEffect(() => {
-//     setRestaurantData(data);
-//   },[]);
