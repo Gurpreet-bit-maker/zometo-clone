@@ -7,13 +7,8 @@ import { Link } from "react-router-dom";
 
 import * as React from "react";
 import PropTypes from "prop-types";
-// import { faEllipsisV } from "@fortawesome/free-solid-svg-icons/faEllipsisV";
-// import { faInfo } from "@fortawesome/free-solid-svg-icons/faInfo";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEllipsisV, faInfo, faL } from "@fortawesome/free-solid-svg-icons";
-
+import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
 import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import SvgIcon from "@mui/material/SvgIcon";
 
@@ -59,8 +54,6 @@ export default function Navbar() {
     return e.menu.filter((m) => m.added);
   });
   console.log(ordered);
-  //* userContext data
-
   // States Varible
   let [menuItems, setMenuItems] = useState([]);
   let [inputValue, setInput] = useState("");
@@ -78,7 +71,6 @@ export default function Navbar() {
     });
     setMenuItems(allItems);
   }, []);
-
   // Input values
   let inpVal = (alphabate) => {
     setInput(alphabate);
