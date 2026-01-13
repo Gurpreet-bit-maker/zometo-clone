@@ -17,6 +17,7 @@ import TakeOutMenu from "./pages/Food-Obtions/TakeOutMenu";
 import IconsRoute from "./components/IconsRoute";
 import Ordered from "./pages/Food-Obtions/Ordered";
 import DiningBooked from "./pages/Food-Obtions/DiningBooked";
+import Takesinglefood from "./pages/Food-Obtions/Takesinglefood";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
             <Route path="/take-out" element={<TakeOutPerent />} />
             <Route path="/menuItems" element={<TakeOutMenu />} />
             <Route path="/ordered" element={<Ordered />} />
+            <Route path="/quantity" element={<Takesinglefood/>} />
           </Routes>
           <IconsRoute />
         </BrowserRouter>

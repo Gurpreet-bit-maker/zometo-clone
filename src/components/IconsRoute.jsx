@@ -11,10 +11,10 @@ function HomeIcon(props) {
 }
 export default function IconsRoute() {
   return (
-    <div className="fixed bottom-12 left-45 bg-black rounded-lg ">
+    <div className="fixed bottom-12 left-45 bg-white rounded-lg ">
       <Link to="/">
         <Stack>
-          <HomeIcon color="primary" sx={{ fontSize: "60px" }} />
+          <HomeIcon color="dark" sx={{ fontSize: "60px" }} />
         </Stack>
       </Link>
     </div>

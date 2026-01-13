@@ -100,10 +100,26 @@ const restaurants = [
     added: false,
     deliveryTime: "30 mins",
     description:
-    "Pizza Paradise is a well-known pizza restaurant located in Mumbai, India. Famous for its cheesy and flavorful pizzas, this place offers freshly baked pizzas made with premium ingredients. With a high customer rating and quick delivery, Pizza Paradise is a perfect choice for family meals, parties, and late-night pizza cravings.",
+      "Pizza Paradise is a well-known pizza restaurant located in Mumbai, India. Famous for its cheesy and flavorful pizzas, this place offers freshly baked pizzas made with premium ingredients. With a high customer rating and quick delivery, Pizza Paradise is a perfect choice for family meals, parties, and late-night pizza cravings.",
     menu: [
-      { id: 301, name: "Margherita Pizza", price: 200, added: false },
-      { id: 302, name: "Farmhouse Pizza", price: 260, added: false },
+      {
+        id: 301,
+        name: "Margherita Pizza",
+        beforeRate: 200,
+        price: 180,
+        image: "/piza images/margherita_pizza_150kb.jpg",
+        added: false,
+        imagelogo: "/veg or nonveg img/veg.png",
+      },
+      {
+        id: 302,
+        name: "Farmhouse Pizza",
+        beforeRate: 260,
+        price: 230,
+        image: "/piza images/farmhouse_pizza_150kb.jpg",
+        added: false,
+        imagelogo: "/veg or nonveg img/veg.png",
+      },
     ],
   },
   {
@@ -119,8 +135,22 @@ const restaurants = [
     description:
       "Burger King is a globally popular fast-food restaurant located in Delhi, India. Known for its flame-grilled burgers, crispy fries, and refreshing beverages, this outlet delivers great taste with consistent quality. It is an ideal option for quick meals, casual dining, and satisfying burger cravings with fast and reliable delivery.",
     menu: [
-      { id: 303, name: "Cheese Burger", price: 120, added: false },
-      { id: 304, name: "Chicken Burger", price: 150, added: false },
+      {
+        id: 303,
+        name: "Cheese Burger",
+        beforeRate: 150,
+        price: 120,
+        image: "/online/burgers/cheeseburger.jpg",
+        added: false,
+      },
+      {
+        id: 304,
+        name: "Chicken Burger",
+        beforeRate: 190,
+        price: 150,
+        image: "/online/burgers/chickenburger.jpg",
+        added: false,
+      },
     ],
   },
   {
@@ -134,7 +164,7 @@ const restaurants = [
     added: false,
     deliveryTime: "35 mins",
     description:
-    "Chinese Wok is a popular restaurant in Noida, India, serving delicious and authentic Chinese cuisine. Known for its flavorful noodles, spicy Manchurian, and fresh ingredients, this restaurant is loved by Chinese food enthusiasts. With generous portions and timely delivery, it is a great choice for lunch and dinner orders.",
+      "Chinese Wok is a popular restaurant in Noida, India, serving delicious and authentic Chinese cuisine. Known for its flavorful noodles, spicy Manchurian, and fresh ingredients, this restaurant is loved by Chinese food enthusiasts. With generous portions and timely delivery, it is a great choice for lunch and dinner orders.",
     menu: [
       { id: 305, name: "Hakka Noodles", price: 140, added: false },
       { id: 306, name: "Manchurian", price: 160, added: false },

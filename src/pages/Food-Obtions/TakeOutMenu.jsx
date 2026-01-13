@@ -7,7 +7,9 @@ export default function TakeOutMenu() {
   let { onlineOrders, setO_Res } = useContext(CartContext);
   let restaurantsData = useLocation();
   let resData = restaurantsData.state;
+  console.log(resData);
   // console.log(resData);
+  let [qnty, setQnty] = useState(0);
 
   let orderedBtn = (itemName) => {
     setO_Res((prev) =>
@@ -19,88 +21,59 @@ export default function TakeOutMenu() {
               ? {
                   ...n,
                   added: true,
-                  quantity: +1,
                 }
               : n
           ),
         };
       })
     );
+    if (qnty < 1) {
+      alert("choose quantity");
+    }
+  };
+
+  let additionOfCount = () => {
+    setQnty(qnty + 1);
   };
 
   return (
     <div className="flex justify-center items-center flex-col bg-gray-100 shadow-lg">
-      {/* try */}
-
-      {/* try */}
-      <div className="bg-gray-300 border w-80 mt-2 py-5 flex flex-col justify-center items-center">
-        <h1 className="text-lg">{resData.name}</h1>
-        <div className="relative">
-          <img className="w-60 h-50 rounded-2xl" src={resData.image} alt="" />
-          <p className="absolute top-40 bg-green-400 px-1 rounded-sm">
-            {" "}
-            ⏱{resData.deliveryTime}
-          </p>
-        </div>
-        <span>⭐⭐⭐⭐ {resData.rating}</span>
-        <p>{resData.location}</p>
-        {/* <TakeOutBtn /> */}
-      </div>
       {/* Menulist with Orderbtns */}
-      <div>
+      <div className="flex gap-y-10 flex-col">
         {onlineOrders.map((e, i) => {
           return e.id == resData.id
             ? e.menu.map((m, index) => (
-                <div
-                  key={index}
-                  className="mt-2 flex flex-col justify-center items-center"
-                >
-                  <p className="w-auto text-lg text-blue-500 text-[22px]">
-                    {m.name}
-                    {"  "}
-                    <span className="text-lg font-mono font-bold">
-                      Rs.{m.price}
-                    </span>
-                  </p>
-                  {m.added ? (
-                    <div className="flex border">
-                      <button
-                        onClick={() => orderedBtn(m.name)}
-                        className="bg-green-500 text-white px-2 h-12 rounded-sm"
-                      >
-                        Ordered
-                      </button>
-                      <div className="flex ml-1">
-                        <div className="flex gap-x-1 ">
-                          <button className="border w-8 flex justify-center items-center m-auto text-[22px] h-8 rounded-2xl">
-                            +
-                          </button>
-                          <button className="border w-8 flex justify-center items-center m-auto text-[22px] h-8 rounded-2xl">
-                            -
-                          </button>
-                        </div>
-                      </div>
+                <div key={index} className="mt-2 flex  justify-between w-100">
+                  <div className="pl-3 flex flex-col gap-y-24">
+                    <p className="w-auto  text-lg text-black mb-1 ">
+                      <img className="w-5" src={m.imagelogo} alt="" />
+                      {m.name}
+                      {"  "}
+                    </p>
+                    <div>
+                      <del className="text-gray-500 text-sm">
+                        ₹{m.beforeRate}
+                      </del>{" "}
+                      <br />
+                      <span className="text-[14px]  text-blue-500 font-mono">
+                        Get for ₹{m.price}
+                      </span>
                     </div>
-                  ) : (
-                    <div className="flex border">
-                      <button
-                        onClick={() => orderedBtn(m.name)}
-                        className="bg-red-500 text-white px-2 h-12"
-                      >
-                        Order Now
-                      </button>
-                      <div className="flex ml-1">
-                        <div className="flex gap-x-1 ">
-                          <button className="border w-8 flex justify-center items-center m-auto text-[22px] h-8 rounded-2xl">
-                            +
-                          </button>
-                          <button className="border w-8 flex justify-center items-center m-auto text-[22px] h-8 rounded-2xl">
-                            -
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  )}
+                  </div>
+                  <div className="relative flex flex-col justify-end items-end w-60">
+                    <img
+                      className="w-50 h-40 rounded-2xl"
+                      src={m.image}
+                      alt=""
+                    />
+                    <Link
+                      to="/quantity"
+                      state={m}
+                      className="absolute bg-pink-50 top-37 flex ml-1 text-pink-500 font-bold justify-between items-center border-1 border-pink-300 rounded-lg px-5 h-10 text-lg rounded-sm"
+                    >
+                      <button className="  ">ADD +</button>
+                    </Link>
+                  </div>
                   {/* quntyty work */}
 
                   {/* quntyty work */}
