@@ -1,17 +1,71 @@
 import img from "../../public/searchImg/searchicon.png";
-import Carts from "../pages/Carts";
 import restaurants from "../data/Data";
 import { useContext, useEffect, useState } from "react";
-import UserContext from "../context/allfoodContext/createContext";
+import CartContext from "../context/CartsContext/CartCreateContext";
+
+import { Link } from "react-router-dom";
+
+import * as React from "react";
+import PropTypes from "prop-types";
+// import { faEllipsisV } from "@fortawesome/free-solid-svg-icons/faEllipsisV";
+// import { faInfo } from "@fortawesome/free-solid-svg-icons/faInfo";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEllipsisV, faInfo, faL } from "@fortawesome/free-solid-svg-icons";
+
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import SvgIcon from "@mui/material/SvgIcon";
+
+const FontAwesomeSvgIcon = React.forwardRef((props, ref) => {
+  const { icon } = props;
+
+  const {
+    icon: [width, height, , , svgPathData],
+  } = icon;
+
+  return (
+    <SvgIcon ref={ref} viewBox={`0 0 ${width} ${height}`}>
+      {typeof svgPathData === "string" ? (
+        <path d={svgPathData} />
+      ) : (
+        /**
+         * A multi-path Font Awesome icon seems to imply a duotune icon. The 0th path seems to
+         * be the faded element (referred to as the "secondary" path in the Font Awesome docs)
+         * of a duotone icon. 40% is the default opacity.
+         *
+         * @see https://fontawesome.com/how-to-use/on-the-web/styling/duotone-icons#changing-opacity
+         */
+        svgPathData.map((d, i) => (
+          <path style={{ opacity: i === 0 ? 0.4 : 1 }} d={d} />
+        ))
+      )}
+    </SvgIcon>
+  );
+});
+FontAwesomeSvgIcon.propTypes = {
+  icon: PropTypes.any.isRequired,
+};
 
 export default function Navbar() {
+  let { onlineOrders, DiningRestaurents } = useContext(CartContext);
+
+  let diningBookedCounts = DiningRestaurents.filter((e) => {
+    return e.added;
+  });
+
+  console.log(diningBookedCounts);
+  let ordered = onlineOrders.flatMap((e) => {
+    return e.menu.filter((m) => m.added);
+  });
+  console.log(ordered);
   //* userContext data
-  let result = useContext(UserContext);
 
   // States Varible
   let [menuItems, setMenuItems] = useState([]);
   let [inputValue, setInput] = useState("");
   let [searchedValue, setSearchedValue] = useState([]);
+  let [isthreeDotClicked, setThreeDotClick] = useState(false);
   // get Restaurant data menu
   let allItems = [];
   useEffect(() => {
@@ -38,23 +92,69 @@ export default function Navbar() {
     }
   };
   let [selectedItem, setSelectedItem] = useState(null);
+  console.log(isthreeDotClicked);
+  // isthreeDotClicked ? console.log("clicked") : console.log("not clicked");
 
   return (
     <div className="flex relative flex-col w-100">
-      <div className=" mt-5 mx-2 relative rounded shadow-lg ">
-        <img src={img} alt="" className="inline w-9 p-1 absolute" />
-        <input
-          type="text"
-          placeholder="search Restaurant . . ."
-          className=" ml-10 h-10 w-70 pl-5"
-          onChange={(e) => inpVal(e.target.value)}
-          value={inputValue}
-        />
+      <div className=" mt-5 mx-2 flex justify-between rounded shadow-lg  w-100 ">
+        <div>
+          <img src={img} alt="" className="inline w-9 p-1 absolute" />
+          <input
+            type="text"
+            placeholder="search Restaurant . . ."
+            className=" ml-10 h-10 w-60  pl-5 "
+            onChange={(e) => inpVal(e.target.value)}
+            value={inputValue}
+          />
+        </div>
+        <div className=" rounded-[13px] w-10 relative">
+          {" "}
+          <Stack>
+            <IconButton
+              aria-label="Example"
+              onClick={() => setThreeDotClick(!isthreeDotClicked)}
+            >
+              <FontAwesomeSvgIcon icon={faEllipsisV} />
+            </IconButton>
+          </Stack>
+        </div>
+
+        {/* threeDotClicked div */}
+        {isthreeDotClicked && (
+          <div className="flex flex-col bg-black/70 border h-20 absolute right-5 bg-gray-400 text-lg top-15">
+            <Link
+              to="/ordered"
+              className="px-3 flex flex-col border bg-red-400 text-black"
+              onClick={() => setThreeDotClick(false)}
+            >
+              <p className="relative tracking-wider">
+                Orders
+                {ordered.length > 0 && (
+                  <p className="absolute left-14  text-white bottom-2 bg-black w-5 text-center rounded-lg text-sm">
+                    {ordered.length}
+                  </p>
+                )}
+              </p>
+            </Link>
+            <Link
+              to="/diningbooked"
+              className="px-3 flex flex-col border bg-red-400 text-black"
+              onClick={() => setThreeDotClick(false)}
+            >
+              <p className="relative tracking-wider">
+                Dinings
+                {diningBookedCounts.length > 0 && (
+                  <p className="absolute left-15  text-white bottom-2 bg-black w-5 text-center rounded-lg text-sm">
+                    {diningBookedCounts.length}
+                  </p>
+                )}
+              </p>
+            </Link>
+          </div>
+        )}
       </div>
 
-      <div className="border rounded-[13px] bg-green-200 h-6 text-center absolute right-3 top-7 w-8 ">
-        <Carts />
-      </div>
       <br />
       <br />
       <div className="flex flex-col  absolute top-15 w-full text-center">
@@ -69,7 +169,6 @@ export default function Navbar() {
             </ul>
           );
         })}
-
         <p className="text-red-400">{selectedItem}</p>
       </div>
     </div>

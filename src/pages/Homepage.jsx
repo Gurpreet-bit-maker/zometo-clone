@@ -1,30 +1,14 @@
-import { useContext, useEffect, useState } from "react";
-import UserContext from "../context//allfoodContext/createContext";
 import { Link } from "react-router-dom";
-import MenuBtn from "../components/MenuBtn";
 
 export default function Homepage() {
-  //* Home page context data
-  let data = useContext(UserContext);
-  console.log(data);
-
-  let [userData, setUserData] = useState([]);
-
-  // * Catogiry booking
-  let [takeOut, setTake] = useState([]);
-  let [dining, setDining] = useState([]);
-  let [bookTable, setBookTable] = useState([]);
-
-  //   Restaurant img
-
   return (
     <div>
-      <h1 className="text-[2.2rem] text-center relative">Restaurants</h1>
+      <h1 className="text-[2.4rem] text-center relative"></h1>
       {/* booking logo */}
 
       <div className=" flex  flex-col items-center">
         {/*//* Catogiry */}
-        <div className="flex gap-x-2">
+        <div className="flex gap-x-2 text-2xl">
           <Link to="/food">
             <div className="bg-blue-300 px-2">Dinning</div>
           </Link>
@@ -36,17 +20,7 @@ export default function Homepage() {
           </Link>
         </div>
         <br />
-        {/*//* All Restaurent */}
-        {/* <video
-  src="https://b.zmtcdn.com/data/file_assets/2627bbed9d6c068e50d2aadcca11ddbb1743095810.mp4"
-  className="object-cover transition-opacity duration-400 overflow-clip pointer-events-none aspect-[1125/1494] w-full opacity-100"
-  autoPlay
-  loop
-  muted
-  playsInline
-  preload="auto"
-></video> */}
-
+        {/* note down this is vedio attributes in react */}
         <div>
           <div className="relative w-full h-full ">
             <video

@@ -9,80 +9,28 @@ export default function TakeOutMenu() {
   let resData = restaurantsData.state;
   // console.log(resData);
 
-  let [showQnty, setQnty] = useState(false);
-
-  let Reducer = (state, action) => {
-    if (action.type === "inc") {
-      return { count: state.count + 1 };
-    }
-    if (action.type === "dec") {
-      return { count: state.count - 1 };
-    }
-  };
-
-  let [state, dispatch] = useReducer(Reducer, { count: 0 });
-
   let orderedBtn = (itemName) => {
     setO_Res((prev) =>
       prev.map((m) => {
         return {
           ...m,
           menu: m.menu.map((n) =>
-            n.name == itemName ? { ...n, added: true } : n
+            n.name == itemName
+              ? {
+                  ...n,
+                  added: true,
+                  quantity: +1,
+                }
+              : n
           ),
         };
       })
     );
-
-    setQnty(true);
   };
-
-  
-  // console.log(onlineOrders);
-  // console.log(resData);
 
   return (
     <div className="flex justify-center items-center flex-col bg-gray-100 shadow-lg">
       {/* try */}
-      {showQnty && (
-        <>
-          {/* overlay */}
-          <div className="fixed inset-0 bg-black/50 z-40"></div>
-
-          {/* modal */}
-          <div className="fixed inset-0 flex items-center justify-center z-50 ">
-            <div className="bg-white p-6 rounded-xl shadow-xl h-40 w-80">
-              <div className="flex justify-around">
-                <span className="font-bold text-lg">Quantity</span>
-                <div className="flex gap-x-3 ">
-                  <button
-                    className="border w-5"
-                    onClick={() => dispatch({ type: "dec" })}
-                  >
-                    -
-                  </button>
-                  <button
-                    className="border w-5"
-                    onClick={() => dispatch({ type: "inc" })}
-                  >
-                    +
-                  </button>
-                </div>
-                <p>{state.count}</p>
-              </div>
-              <br />
-              <div className="flex justify-center items-center">
-                <button
-                  className="border rounded-sm shadow-lg active:bg-red-300 px-2 bg-gray-500 text-white py-1"
-                  onClick={() => setQnty(false)}
-                >
-                  Order Now
-                </button>
-              </div>
-            </div>
-          </div>
-        </>
-      )}
 
       {/* try */}
       <div className="bg-gray-300 border w-80 mt-2 py-5 flex flex-col justify-center items-center">
@@ -107,25 +55,55 @@ export default function TakeOutMenu() {
                   key={index}
                   className="mt-2 flex flex-col justify-center items-center"
                 >
-                  <p className="w-auto text-lg tracking-wide">
-                    {m.name}{" "}
-                    <span className="text-sm font-bold">Rs.{m.price}</span>
+                  <p className="w-auto text-lg text-blue-500 text-[22px]">
+                    {m.name}
+                    {"  "}
+                    <span className="text-lg font-mono font-bold">
+                      Rs.{m.price}
+                    </span>
                   </p>
                   {m.added ? (
-                    <button
-                      onClick={() => orderedBtn(m.name)}
-                      className="bg-green-500 text-white px-2"
-                    >
-                      Ordered
-                    </button>
+                    <div className="flex border">
+                      <button
+                        onClick={() => orderedBtn(m.name)}
+                        className="bg-green-500 text-white px-2 h-12 rounded-sm"
+                      >
+                        Ordered
+                      </button>
+                      <div className="flex ml-1">
+                        <div className="flex gap-x-1 ">
+                          <button className="border w-8 flex justify-center items-center m-auto text-[22px] h-8 rounded-2xl">
+                            +
+                          </button>
+                          <button className="border w-8 flex justify-center items-center m-auto text-[22px] h-8 rounded-2xl">
+                            -
+                          </button>
+                        </div>
+                      </div>
+                    </div>
                   ) : (
-                    <button
-                      onClick={() => orderedBtn(m.name)}
-                      className="bg-red-500 text-white px-2"
-                    >
-                      Order Now
-                    </button>
+                    <div className="flex border">
+                      <button
+                        onClick={() => orderedBtn(m.name)}
+                        className="bg-red-500 text-white px-2 h-12"
+                      >
+                        Order Now
+                      </button>
+                      <div className="flex ml-1">
+                        <div className="flex gap-x-1 ">
+                          <button className="border w-8 flex justify-center items-center m-auto text-[22px] h-8 rounded-2xl">
+                            +
+                          </button>
+                          <button className="border w-8 flex justify-center items-center m-auto text-[22px] h-8 rounded-2xl">
+                            -
+                          </button>
+                        </div>
+                      </div>
+                    </div>
                   )}
+                  {/* quntyty work */}
+
+                  {/* quntyty work */}
                 </div>
               ))
             : null;

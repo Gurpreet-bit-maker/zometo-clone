@@ -1,10 +1,4 @@
-import CartContext from "../context/CartsContext/CartCreateContext";
-import { useContext, useEffect, useState } from "react";
-
 export default function MenuItemBtn({ i, BookingBtnAdded, lowBookedBtn }) {
-  let { DiningRestaurents, setD_Res, setcarts, cartsItems } =
-    useContext(CartContext);
-
   console.log(i);
   // btn of dining booked
   return (
