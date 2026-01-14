@@ -46,45 +46,15 @@ export default function Takesinglefood() {
       })
     );
   };
-
-  console.log(onlineOrders);
+  let orderedTrue = onlineOrders.some((x) => {
+    return x.menu.some((y) => y.added);
+  });
+  console.log(orderedTrue);
+  // console.log(onlineOrders);
   return (
     <div className="">
-      {/* name and cart btns */}
-      {!isClicked && (
-        <div className="">
-          <div className="absolute inset-0 z-40 bg-black/60"></div>
-          <div className="fixed top-50 left-17 z-50 bg-white w-70 h-90 rounded-sm">
-            <h1 className="text-center text-lg mt-5 ">Fill The Form</h1>
-            <div className=" flex flex-col gap-y-3 px-5 mt-2 h-70">
-              <input
-                className="border px-2 h-10"
-                type="text"
-                placeholder="Your Name.."
-              />
-              <input
-                className="border px-2 h-10"
-                type="text"
-                placeholder="Your Mobile.."
-              />
-              <textarea
-                className="border px-2 h-30"
-                name=""
-                placeholder="Enter Address.."
-                id=""
-              ></textarea>
-              <div className="flex justify-center">
-                <button
-                  onClick={() => setCliked(!isClicked)}
-                  className="border px-3 py-1 tracking-wide rounded-sm shadow-lg  bg-green-400 text-white "
-                >
-                  Submit
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* form */}
+     
       <div className="flex justify-around  shadow-2xl h-50">
         <div className="flex flex-col gap-y-10">
           <p className="font-bold">
@@ -123,18 +93,35 @@ export default function Takesinglefood() {
           </p>
           {/* buy botton absolute */}
           <div className="h-30 relative w-40">
-            <button
-              onClick={buyBtn}
-              className="absolute top-20 right-0 px-2 w-full h-14 rounded-lg text-white flex justify-between bg-[#DC5C63] border"
-            >
-              <span className="font-bold">
-                ₹{totalAmount} <br />
-                <span className="font-medium">Total</span>
-              </span>
-              <span className="font-bold tracking-wide flex justify-center items-center">
-                Place Order
-              </span>
-            </button>
+            {!orderedTrue ? (
+              <button
+                type="button"
+                onClick={buyBtn}
+                className=" active:scale-105 box-border border border-transparent hover:bg-danger-strong focus:ring-4 focus:ring-danger-medium shadow-xs font-medium leading-5 rounded-base absolute top-20 right-0 px-2 w-full h-14 rounded-lg text-white flex justify-between bg-[#DC5C63] border"
+              >
+                <span className="font-bold">
+                  ₹{totalAmount} <br />
+                  <span className="font-medium">Total</span>
+                </span>
+                <span className="font-bold tracking-wide flex justify-center items-center">
+                  Place Order
+                </span>
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={buyBtn}
+                className="  active:scale-105  absolute top-20 right-0 px-2 w-full h-14 rounded-lg text-white flex justify-between bg-green-600 border"
+              >
+                <span className="font-bold">
+                  ₹{totalAmount} <br />
+                  <span className="font-medium">Total</span>
+                </span>
+                <span className="font-bold text-lg tracking-wide flex justify-center items-center">
+                  Ordered
+                </span>
+              </button>
+            )}
           </div>
         </div>
       </div>
