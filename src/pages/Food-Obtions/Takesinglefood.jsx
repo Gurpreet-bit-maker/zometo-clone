@@ -2,21 +2,12 @@ import { Link, useLocation } from "react-router-dom";
 import CartContext from "../../context/CartsContext/CartCreateContext";
 import { useContext, useEffect, useState } from "react";
 export default function Takesinglefood() {
-  let { onlineOrders, setO_Res } = useContext(CartContext);
+  let { onlineOrders, setO_Res, setOnlineOrderList, onlineOrdersList } =
+    useContext(CartContext);
   let restaurantsData = useLocation();
   let resData = restaurantsData.state;
 
   // user details form
-  let [isClicked, setCliked] = useState(false);
-
-  useEffect(() => {
-    console.log(isClicked);
-  });
-
-  let r = setTimeout(() => {
-    return restaurantsData.state;
-  }, 2000);
-  console.log(r);
 
   // qnty btns func
   let [qnty, setQnty] = useState(1);
@@ -46,15 +37,27 @@ export default function Takesinglefood() {
       })
     );
   };
-  let orderedTrue = onlineOrders.some((x) => {
-    return x.menu.some((y) => y.added);
+  useEffect(() => {
+    let shipmentsObj = onlineOrders.flatMap((item) => {
+      return item.menu.filter((m) => m.added);
+    });
+    setOnlineOrderList(shipmentsObj);
+  }, [onlineOrders]);
+
+  // indivisual btn click
+
+  // // console.log(onlineOrders);
+  // console.log(onlineOrdersList);
+
+  let orderedTrue = onlineOrdersList.some((x) => {
+    return x.added && x.name == resData.name;
   });
   console.log(orderedTrue);
   // console.log(onlineOrders);
   return (
     <div className="">
       {/* form */}
-     
+
       <div className="flex justify-around  shadow-2xl h-50">
         <div className="flex flex-col gap-y-10">
           <p className="font-bold">

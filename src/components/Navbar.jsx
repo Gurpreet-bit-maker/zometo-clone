@@ -49,11 +49,11 @@ export default function Navbar() {
     return e.added;
   });
 
-  console.log(diningBookedCounts);
+  
   let ordered = onlineOrders.flatMap((e) => {
     return e.menu.filter((m) => m.added);
   });
-  console.log(ordered);
+ 
   // States Varible
   let [menuItems, setMenuItems] = useState([]);
   let [inputValue, setInput] = useState("");
@@ -84,7 +84,7 @@ export default function Navbar() {
     }
   };
   let [selectedItem, setSelectedItem] = useState(null);
-  console.log(isthreeDotClicked);
+  
   // isthreeDotClicked ? console.log("clicked") : console.log("not clicked");
 
   return (

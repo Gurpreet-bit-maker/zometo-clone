@@ -27,6 +27,8 @@ let CartsData = ({ children }) => {
     })
   );
 
+  let [onlineOrdersList, setOnlineOrderList] = useState([]);
+
   let [cartsItems, setcarts] = useState([]);
   let [added, setAdded] = useState(false);
 
@@ -49,6 +51,8 @@ let CartsData = ({ children }) => {
         Booking,
         onlineOrders,
         setO_Res,
+        onlineOrdersList,
+        setOnlineOrderList,
       }}
     >
       {children}

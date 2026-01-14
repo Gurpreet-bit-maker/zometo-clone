@@ -1,24 +1,29 @@
 import CartContext from "../../context/CartsContext/CartCreateContext";
 import { useContext, useEffect, useState } from "react";
 export default function Ordered() {
-  let { onlineOrders, setO_Res } = useContext(CartContext);
+  let { onlineOrders, setO_Res, onlineOrdersList } = useContext(CartContext);
+  console.log(onlineOrdersList);
 
-  let ordered = onlineOrders.filter((e) => {
-    return e.menu.some((m) => m.added);
-  });
-  // console.log(ordered);
-
-  let quantity = onlineOrders.flatMap((item) => {
+  let shipmentsObj = onlineOrders.flatMap((item) => {
     return item.menu.filter((m) => m.quantity);
   });
-  // console.log(quantity[0].price);
+  console.log(shipmentsObj);
 
   //* gst price for display
-  let gstRate = 5;
-  let withQntyAmt =
-    quantity.length > 0 && quantity[0].price * quantity[0].quantity;
-  let gstAmount = (gstRate / 100) * withQntyAmt;
-  let totalAmount = gstAmount + withQntyAmt;
+  let gstRate;
+  let gstAmount;
+  let withQntyAmt;
+  let totalAmount;
+
+  for (let index = 0; index < shipmentsObj.length; index++) {
+    console.log(shipmentsObj[index]);
+    gstRate = 5;
+    withQntyAmt =
+      shipmentsObj.length >= 0 &&
+      shipmentsObj[index].price * shipmentsObj[index].quantity;
+    gstAmount = (gstRate / 100) * withQntyAmt;
+    totalAmount = gstAmount + withQntyAmt;
+  }
   console.log(totalAmount);
 
   // let [count, setCount] = useState(0);
@@ -43,37 +48,105 @@ export default function Ordered() {
   };
 
   return (
-    <div className="bg-[#F1F8E9] h-170">
-      <div>
-        {ordered.map((item) => {
-          return item.menu.map((e, i) => {
-            return e.added ? (
-              <div className="shadow-lg rounded-lg  text-[20px]" key={i}>
-                <div className="flex gap-x-24 tracking-wide">
-                  <div className="flex justify-between px-5 w-full bg-white h-25">
-                    <div className="flex">
-                      <img
-                        className="w-5 inline pt-1 mr-5 h-7"
-                        src={quantity[0].imagelogo}
-                        alt=""
-                      />{" "}
-                      <p className="">{e.name}</p>
-                    </div>
-
-                    <p>₹{totalAmount}</p>
+    <div className="bg-white h-170 ">
+      <div className="border py-5">
+        {onlineOrdersList.length > 0 ? (
+          onlineOrdersList.map((item, index) => {
+            return (
+              <div className="" key={index}>
+                <div className=" flex justify-between px-5 text-[22px] ">
+                  <div className="flex items-center">
+                    <img className="w-5 h-5 mr-1" src={item.imagelogo} alt="" />
+                    <h1>{item.name}</h1>
                   </div>
+                  <p>₹{item.price * item.quantity}</p>
                 </div>
+                {/*  */}
               </div>
-            ) : // work pending
-            null;
-          });
-        })}
+            );
+          })
+        ) : (
+          <div>Dont have orders</div>
+        )}
+        {/* item details */}
+        <div className="bg-[#FDE9EA] mt-2 flex justify-between px-5 py-2">
+          <div className="text-gray-500 text-[18px]">
+            <p>Item Total</p>
+            <p>Delivery Charges</p>
+            <p>GST Amount</p>
+            <strong>GRAND TOTAL</strong>
+          </div>
+          <div className="text-gray-500 text-[18px]">
+            <p>{withQntyAmt}</p>
+            <strong>{}</strong>
+          </div>
+        </div>
+        {/*  your details */}{" "}
+        <div className=" px-5 py-5 mt-2 flex justify-between items-center">
+          <div className="text-gray-500 text-[19px] leading-8">
+            <h1 className=" text-[25px] text-black mb-1">Your Details</h1>
+            <p>User: address</p>
+            <p>Phone No: 0123456789</p>
+          </div>
+          <button
+            type="button"
+            className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-base text-sm px-4 py-2.5 text-center leading-5 h-10"
+          >
+            Change
+          </button>
+        </div>
       </div>
     </div>
   );
 }
 
+//  <p>₹{shipmentsObj[]}</p>
+//             <p>₹0</p>
+//             <p>₹{}</p>
+
 {
+  //! item details
+
+  //  <div className="bg-[#FDE9EA] mt-2 flex justify-between px-5 py-2">
+  //                     <div className="text-gray-500 text-[18px]">
+  //                       <p>Item Total</p>
+  //                       <p>Delivery Charges</p>
+  //                       <p>GST Amount</p>
+  //                       <strong>GRAND TOTAL</strong>
+  //                     </div>
+  //                     <div className="text-gray-500 text-[18px]">
+  //                       <p>₹{withQntyAmt}</p>
+  //                       <p>₹0</p>
+  //                       <p>₹{gstAmount}</p>
+  //                       <strong>{totalAmount}</strong>
+  //                     </div>
+  //                   </div>
+
+  //! you details
+
+  //  <div className=" px-5 py-5 mt-2 flex justify-between items-center">
+  //                     <div className="text-gray-500 text-[19px] leading-8">
+  //                       <h1 className=" text-[25px] text-black mb-1">
+  //                         Your Details
+  //                       </h1>
+  //                       <p>User: address</p>
+  //                       <p>Phone No: 0123456789</p>
+  //                     </div>
+  //                     <button
+  //                       type="button"
+  //                       className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-base text-sm px-4 py-2.5 text-center leading-5 h-10"
+  //                     >
+  //                       Change
+  //                     </button>
+  //                   </div>
+
+  //! delivery img
+  {
+    /* <div className=" flex justify-center w-full">
+                    <img className=" w-60" src="/icons/delivery.jpg" alt="" />
+                  </div> */
+  }
+
   /* <div className="flex flex-col gap-y-2">
                     <span className="text-red-500 text-[13px] font-bold">
                       <span className="text-[28px]">⏱</span> {1}{" "}
