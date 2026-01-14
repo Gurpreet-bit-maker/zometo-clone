@@ -1,22 +1,56 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Homepage() {
+  let [userAthentication, setAthenticationForm] = useState(false);
+
   return (
-    <div>
+    <div className="relative">
       <h1 className="text-[2.4rem] text-center relative"></h1>
       {/* booking logo */}
-
+      {!userAthentication && (
+        <div className="">
+          {/* overlay */}
+          <div className="fixed inset-0 bg-black/60 z-40"></div>
+          <div className="fixed inset-0  z-50 flex justify-center items-center">
+            <div className="h-150 w-90 bg-white flex flex-col gap-y-5 justify-center items-center">
+              <img src="/logicIcons/logo (1).png" alt="" />
+              <div className="flex flex-col gap-y-1">
+                <button
+                  onClick={() => setAthenticationForm(!userAthentication)}
+                  className="px-20 tracking-wide  h-10 rounded-2xl bg-[#F2AC06] text-white"
+                >
+                  Login
+                </button>
+                <button className="px-5 tracking-wide underline h-10 rounded-2xl text-black">
+                  Sign
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
       <div className=" flex  flex-col items-center">
         {/*//* Catogiry */}
         <div className="flex gap-x-2 text-2xl">
           <Link to="/food">
-            <button type="button" class="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-base text-lg px-4 py-2.5 text-center leading-5">Dining</button>
+            <button
+              type="button"
+              className="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-base text-lg px-4 py-2.5 text-center leading-5"
+            >
+              Dining
+            </button>
           </Link>
           <Link to="/Booking">
             <div className="bg-blue-300 px-2">Booking</div>
           </Link>
           <Link to="/take-out">
-           <button type="button" class="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-base text-lg px-4 py-2.5 text-center leading-5">Take Out</button>
+            <button
+              type="button"
+              className="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-base text-lg px-4 py-2.5 text-center leading-5"
+            >
+              Take Out
+            </button>
           </Link>
         </div>
         <br />
@@ -33,7 +67,7 @@ export default function Homepage() {
               preload="auto"
             ></video>
           </div>
-          <div className="absolute top-133 text-black  px-3 font-bold flex flex-col gap-y-3">
+          <div className="absolute top-110 text-black  px-3 font-bold flex flex-col gap-y-3">
             <h1 className="text-4xl">India’s #1 food delivery app</h1>
             <h3 className="text-[18px] ">
               Experience fast & easy online ordering <br /> on the Zomato app

@@ -15,6 +15,8 @@ export default function Ordered() {
   let withQntyAmt;
   let totalAmount;
 
+  let multipleItemTotal = [];
+
   for (let index = 0; index < shipmentsObj.length; index++) {
     console.log(shipmentsObj[index]);
     gstRate = 5;
@@ -23,8 +25,15 @@ export default function Ordered() {
       shipmentsObj[index].price * shipmentsObj[index].quantity;
     gstAmount = (gstRate / 100) * withQntyAmt;
     totalAmount = gstAmount + withQntyAmt;
+    multipleItemTotal.push(shipmentsObj[index].price);
   }
-  console.log(totalAmount);
+  console.log(multipleItemTotal);
+ 
+  let resulttwo = multipleItemTotal.reduce((acc, current) => {
+    return acc + current;
+  }, 0);
+  console.log(resulttwo);
+  // console.log(totalAmount);
 
   // let [count, setCount] = useState(0);
   // if (ordered.length > 0) {
@@ -49,16 +58,17 @@ export default function Ordered() {
 
   return (
     <div className="bg-white h-170 ">
-      <div className="border py-5">
+      <div className=" py-5">
         {onlineOrdersList.length > 0 ? (
           onlineOrdersList.map((item, index) => {
             return (
-              <div className="" key={index}>
+              <div className="  shadow-2xl" key={index}>
                 <div className=" flex justify-between px-5 text-[22px] ">
                   <div className="flex items-center">
                     <img className="w-5 h-5 mr-1" src={item.imagelogo} alt="" />
                     <h1>{item.name}</h1>
                   </div>
+                  <p className="text-[18px]">Qty.{item.quantity}</p>
                   <p>₹{item.price * item.quantity}</p>
                 </div>
                 {/*  */}
@@ -66,11 +76,20 @@ export default function Ordered() {
             );
           })
         ) : (
-          <div>Dont have orders</div>
+          <div>
+            <img
+              className="w-35 pl-5 inline-block"
+              src="/icons/oops.png"
+              alt=""
+            />
+            <span className="text-pink-400 font-bold text-lg">
+              You Don't Have Order...
+            </span>
+          </div>
         )}
         {/* item details */}
-        <div className="bg-[#FDE9EA] mt-2 flex justify-between px-5 py-2">
-          <div className="text-gray-500 text-[18px]">
+        <div className="bg-[#FDE9EA] mt-3  flex justify-between px-5 py-4">
+          <div className="text-gray-600 text-[18px]">
             <p>Item Total</p>
             <p>Delivery Charges</p>
             <p>GST Amount</p>
@@ -78,7 +97,9 @@ export default function Ordered() {
           </div>
           <div className="text-gray-500 text-[18px]">
             <p>{withQntyAmt}</p>
-            <strong>{}</strong>
+            <p>0</p>
+            <p>{gstAmount}</p>
+            <strong>{totalAmount}</strong>
           </div>
         </div>
         {/*  your details */}{" "}
@@ -95,6 +116,10 @@ export default function Ordered() {
             Change
           </button>
         </div>
+      </div>
+      {/* delivery img */}
+      <div className=" flex justify-center w-full">
+        <img className=" w-60" src="/icons/delivery.jpg" alt="" />
       </div>
     </div>
   );
