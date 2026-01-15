@@ -42,19 +42,19 @@ export default function Ordered() {
   //   }, 1000);
   // }
 
-  let deleteOrder = (itemName) => {
-    setO_Res((prev) =>
-      prev.map((m) => {
-        return {
-          ...m,
-          menu: m.menu.map((n) =>
-            n.name == itemName ? { ...n, added: !n.added } : n
-          ),
-        };
-      })
-    );
-    console.log(itemName);
-  };
+  // let deleteOrder = (itemName) => {
+  //   setO_Res((prev) =>
+  //     prev.map((m) => {
+  //       return {
+  //         ...m,
+  //         menu: m.menu.map((n) =>
+  //           n.name == itemName ? { ...n, added: !n.added } : n
+  //         ),
+  //       };
+  //     })
+  //   );
+  //   console.log(itemName);
+  // };
 
   return (
     <div className="bg-white h-170 ">
@@ -95,6 +95,7 @@ export default function Ordered() {
             <p>GST Amount</p>
             <strong>GRAND TOTAL</strong>
           </div>
+          {/*//! TODO: work pending */}
           <div className="text-gray-500 text-[18px]">
             <p>{withQntyAmt}</p>
             <p>0</p>
@@ -109,6 +110,7 @@ export default function Ordered() {
             <p>User: address</p>
             <p>Phone No: 0123456789</p>
           </div>
+          {/* //! TODO: address change work pending */}
           <button
             type="button"
             className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-base text-sm px-4 py-2.5 text-center leading-5 h-10"

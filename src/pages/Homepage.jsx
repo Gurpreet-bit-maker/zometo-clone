@@ -15,16 +15,20 @@ export default function Homepage() {
           <div className="fixed inset-0  z-50 flex justify-center items-center">
             <div className="h-150 w-90 bg-white flex flex-col gap-y-5 justify-center items-center">
               <img src="/logicIcons/logo (1).png" alt="" />
-              <div className="flex flex-col gap-y-1">
+              {/* Login & Sign Link */}
+              <div className="flex flex-col justify-center items-center gap-y-1">
                 <button
                   onClick={() => setAthenticationForm(!userAthentication)}
                   className="px-20 tracking-wide  h-10 rounded-2xl bg-[#F2AC06] text-white"
                 >
                   Login
                 </button>
-                <button className="px-5 tracking-wide underline h-10 rounded-2xl text-black">
-                  Sign
-                </button>
+
+                <Link to="signForm">
+                  <button className="px-5 tracking-wide underline h-10 rounded-2xl text-black">
+                    Sign
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

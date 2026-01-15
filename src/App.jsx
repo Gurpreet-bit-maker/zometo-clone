@@ -18,6 +18,8 @@ import IconsRoute from "./components/IconsRoute";
 import Ordered from "./pages/Food-Obtions/Ordered";
 import DiningBooked from "./pages/Food-Obtions/DiningBooked";
 import Takesinglefood from "./pages/Food-Obtions/Takesinglefood";
+import Sign from "./pages/FormAuthentication/Sign";
+import Login from "./pages/FormAuthentication/Login";
 
 function App() {
   return (
@@ -35,7 +37,11 @@ function App() {
             <Route path="/take-out" element={<TakeOutPerent />} />
             <Route path="/menuItems" element={<TakeOutMenu />} />
             <Route path="/ordered" element={<Ordered />} />
-            <Route path="/quantity" element={<Takesinglefood/>} />
+            <Route path="/quantity" element={<Takesinglefood />} />
+            {/* Sign Form Page Route */}
+            <Route path="/signForm" element={<Sign />} />
+            {/* Login Form Page Route */}
+            <Route path="/loginpage" element={<Login />} />
           </Routes>
           <IconsRoute />
         </BrowserRouter>
