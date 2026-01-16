@@ -58,7 +58,7 @@ export default function Homepage() {
           </div>
         </div>
         {/* //* text */}
-        <div className=" px-5 relative  h-100 flex justify-center gap-y-2 items-center  ">
+        <div className=" px-5 relative  h-120 shadow-sm flex justify-center gap-y-2 items-center  ">
           <div className="text-center px-5">
             <h1 className="text-[#EF4F5F] text-2xl">
               Better food for more people
@@ -79,7 +79,9 @@ export default function Homepage() {
         {/* sign up  */}
         <Sign />
         {/* footer */}
-        <footer className="bg-black/70 w-full text-center text-white tracking-wider">codewithgurpreet@gmail.com</footer>
+        <footer className="bg-black/70 w-full text-center text-white tracking-wider">
+          codewithgurpreet@gmail.com
+        </footer>
       </div>
     </div>
   );

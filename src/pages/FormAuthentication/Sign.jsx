@@ -44,7 +44,7 @@ export default function Sign() {
   let password = watch("re_password");
   //   console.log(handleSubmit);
   return (
-    <div className="h-150 bg-pink-50 py-5 shadow-lg w-full flex flex-col justify-center items-center">
+    <div className="h-150 bg-green-50 py-5 shadow-lg w-full flex flex-col justify-center items-center">
       <form
         className="flex flex-col w-70 gap-y-5"
         action=""
