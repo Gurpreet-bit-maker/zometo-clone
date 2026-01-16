@@ -22,6 +22,7 @@ export default function Sign() {
     register,
     handleSubmit,
     reset,
+    watch,
     formState: { errors, isSubmitSuccessful },
   } = useForm();
 
@@ -40,9 +41,10 @@ export default function Sign() {
     }
   };
 
+  let password = watch("re_password");
   //   console.log(handleSubmit);
   return (
-    <div className="h-150 py-5 shadow-lg w-full flex flex-col justify-center items-center">
+    <div className="h-150 bg-pink-50 py-5 shadow-lg w-full flex flex-col justify-center items-center">
       <form
         className="flex flex-col w-70 gap-y-5"
         action=""
@@ -53,7 +55,11 @@ export default function Sign() {
           className="border h-10 rounded-lg pl-5 w-full"
           type="text"
           placeholder="Username"
-          {...register("username", { required: "Name required" })}
+          {...register(
+            "username",
+            { maxLength: { value: 15 } },
+            { required: "Name required" }
+          )}
         />
         {errors.username && (
           <p className="text-yellow-400">{errors.username.message}</p>
@@ -71,7 +77,11 @@ export default function Sign() {
           className="border h-10 rounded-lg pl-5 w-full"
           type="number"
           placeholder="Phone number"
-          {...register("phone", { required: "phone required" })}
+          {...register(
+            "phone",
+            { minLength: { value: 10, message: "min 10 numbers" } },
+            { required: "phone required" }
+          )}
         />
         {errors.phone && (
           <p className="text-yellow-400">{errors.phone.message}</p>
@@ -80,7 +90,14 @@ export default function Sign() {
           className="border h-10 rounded-lg pl-5 w-full"
           type="password"
           placeholder="Confirm Re-Password"
-          {...register("re_password", { required: "re-password required" })}
+          {...register(
+            "re_password",
+            {
+              minLength: { value: 8, message: "min length 8" },
+              maxLength: { value: 15, message: "max length 15" },
+            },
+            { required: "re-password required" }
+          )}
         />
         {errors.re_password && (
           <p className="text-yellow-400">{errors.re_password.message}</p>
@@ -89,7 +106,13 @@ export default function Sign() {
           className="border h-10 rounded-lg pl-5 w-full"
           type="password"
           placeholder="Password"
-          {...register("password", { required: "password required" })}
+          {...register("password", {
+            required: "password required",
+            minLength: { value: 8, message: "min 8 char" },
+            maxLength: { value: 15, message: "max 15 char" },
+            validate: (value) =>
+              value === password || "password does not match",
+          })}
         />
         {errors.password && (
           <p className="text-yellow-400">{errors.password.message}</p>

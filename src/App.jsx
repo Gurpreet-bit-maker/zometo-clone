@@ -37,7 +37,7 @@ function App() {
               <Route path="/ordered" element={<Ordered />} />
               <Route path="/quantity" element={<Takesinglefood />} />
               {/* Sign Form Page Route */}
-              <Route path="/signForm" element={<Sign />} />
+         
               {/* Login Form Page Route */}
               <Route path="/loginpage" element={<Login />} />
             </Routes>

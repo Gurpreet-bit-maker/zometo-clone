@@ -23,7 +23,7 @@ export default function Login() {
       setLoginData((prev) => [...prev, data]);
       console.log(data);
       reset();
-      navigate("/", { state: loginData });
+      navigate("/", { state: data });
     } catch (error) {
       console.log(error);
     }

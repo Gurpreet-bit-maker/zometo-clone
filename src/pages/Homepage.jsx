@@ -1,46 +1,18 @@
 import { useState, useContext, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import userAuthentication from "../context/authentication/authenticationCreate";
+import Sign from "./FormAuthentication/Sign";
 export default function Homepage() {
   let { loginData, signUpData } = useContext(userAuthentication);
   let result = useLocation();
   let loginstate = result.state;
 
-  console.log(loginstate);
-  useEffect(() => {
-    console.log(loginData);
-    console.log(signUpData);
-  });
+  // if (loginData.length <= 0 || signUpData.length <= 0) {
+  //   alert("please sign up or login first");
+  // }
 
   return (
     <div className="relative">
-     
-      {loginData.length <= 0 && signUpData.length <= 0 && (
-        <div className="">
-          {/* overlay */}
-          <div className="fixed inset-0 bg-black/60 z-40"></div>
-          <div className="fixed inset-0  z-50 flex justify-center items-center">
-            <div className="h-150 w-90 bg-white flex flex-col gap-y-5 justify-center items-center">
-              <img src="/logicIcons/logo (1).png" alt="" />
-              {/* Login & Sign Link */}
-              <div className="flex flex-col justify-center items-center gap-y-1">
-                <Link to="/loginpage">
-                  <button className="px-20 tracking-wide  h-10 rounded-2xl bg-[#F2AC06] text-white">
-                    Login
-                  </button>
-                </Link>
-
-                <Link to="/signForm">
-                  <button className="px-5 tracking-wide underline h-10 rounded-2xl text-black">
-                    Sign
-                  </button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
       {/* booking logo */}
 
       <div className=" flex  flex-col items-center">
@@ -54,9 +26,7 @@ export default function Homepage() {
               Dining
             </button>
           </Link>
-          <Link to="/Booking">
-            <div className="bg-blue-300 px-2">Booking</div>
-          </Link>
+
           <Link to="/take-out">
             <button
               type="button"
@@ -106,9 +76,10 @@ export default function Homepage() {
             />
           </div>
         </div>
-        <div className="bg-pink-50 h-80 w-full">
-          <h1>hello world</h1>
-        </div>
+        {/* sign up  */}
+        <Sign />
+        {/* footer */}
+        <footer className="bg-black/70 w-full text-center text-white tracking-wider">codewithgurpreet@gmail.com</footer>
       </div>
     </div>
   );

@@ -46,7 +46,8 @@ FontAwesomeSvgIcon.propTypes = {
 export default function Navbar() {
   let { onlineOrders, DiningRestaurents } = useContext(CartContext);
   let { loginData, signUpData } = useContext(userAuthentication);
-  console.log(signUpData)
+ 
+  
 
   let diningBookedCounts = DiningRestaurents.filter((e) => {
     return e.added;
@@ -90,11 +91,12 @@ export default function Navbar() {
   return (
     <div className="flex relative flex-col w-100">
       {/* account name */}
-      {signUpData.length > 0  && (
-        <p className="mt-2 text-white text-center ml-1 px-1 bg-green-400 w-5 rounded-2xl">
-          {signUpData[0].username.slice(0, 1).toUpperCase()}
-        </p>
-      )}
+      {loginData.length > 0 &&
+        ( (
+          <p className="mt-2 text-white text-center ml-1 px-1 bg-green-400 w-5 rounded-2xl">
+            {loginData[0].username.slice(0, 1).toUpperCase()}
+          </p>
+        ))}
 
       <div className=" mt-5 mx-2 flex justify-between rounded shadow-lg  w-100 ">
         <div>
