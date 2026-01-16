@@ -11,6 +11,7 @@ import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
 import Stack from "@mui/material/Stack";
 import IconButton from "@mui/material/IconButton";
 import SvgIcon from "@mui/material/SvgIcon";
+import userAuthentication from "../context/authentication/authenticationCreate";
 
 const FontAwesomeSvgIcon = React.forwardRef((props, ref) => {
   const { icon } = props;
@@ -44,16 +45,17 @@ FontAwesomeSvgIcon.propTypes = {
 
 export default function Navbar() {
   let { onlineOrders, DiningRestaurents } = useContext(CartContext);
+  let { loginData, signUpData } = useContext(userAuthentication);
+  console.log(signUpData)
 
   let diningBookedCounts = DiningRestaurents.filter((e) => {
     return e.added;
   });
 
-  
   let ordered = onlineOrders.flatMap((e) => {
     return e.menu.filter((m) => m.added);
   });
- 
+
   // States Varible
   let [menuItems, setMenuItems] = useState([]);
   let [inputValue, setInput] = useState("");
@@ -84,11 +86,16 @@ export default function Navbar() {
     }
   };
   let [selectedItem, setSelectedItem] = useState(null);
-  
-  // isthreeDotClicked ? console.log("clicked") : console.log("not clicked");
 
   return (
     <div className="flex relative flex-col w-100">
+      {/* account name */}
+      {signUpData.length > 0  && (
+        <p className="mt-2 text-white text-center ml-1 px-1 bg-green-400 w-5 rounded-2xl">
+          {signUpData[0].username.slice(0, 1).toUpperCase()}
+        </p>
+      )}
+
       <div className=" mt-5 mx-2 flex justify-between rounded shadow-lg  w-100 ">
         <div>
           <img src={img} alt="" className="inline w-9 p-1 absolute" />

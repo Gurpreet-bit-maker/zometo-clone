@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
-import { useEffect, useState, useTransition } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useEffect, useState, useTransition } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import userAuthentication from "../../context/authentication/authenticationCreate";
 
 export default function Sign() {
   //   let b = [1, 3, 5].reduce((acc, current) => {
@@ -9,13 +10,12 @@ export default function Sign() {
 
   //   console.log(b);
   //*   usetransition hook
-  let { isPending, startTransition } = useTransition();
+  let navigate = useNavigate();
 
-  let [userdata, setUserData] = useState([]);
-  let [isSubmiting, setIssubmiting] = useState(false);
-  useEffect(() => {
-    console.log(userdata);
-  });
+  let { signUpData, setSignUpData } = useContext(userAuthentication);
+  console.log(signUpData);
+
+  useEffect(() => {});
 
   //*   useform hook
   let {
@@ -29,10 +29,12 @@ export default function Sign() {
   let submitData = (data) => {
     try {
       setTimeout(() => {
-        setUserData(data);
+        setSignUpData((prev) => [...prev, data]);
         console.log(data);
         reset();
-      }, 2000);
+
+        navigate("/", { state: data });
+      }, 1000);
     } catch (error) {
       console.log(error);
     }
@@ -40,7 +42,7 @@ export default function Sign() {
 
   //   console.log(handleSubmit);
   return (
-    <div className="border w-full flex flex-col justify-center items-center">
+    <div className="h-150 py-5 shadow-lg w-full flex flex-col justify-center items-center">
       <form
         className="flex flex-col w-70 gap-y-5"
         action=""
@@ -93,14 +95,18 @@ export default function Sign() {
           <p className="text-yellow-400">{errors.password.message}</p>
         )}
         <button
-          disabled={isPending}
           className="border h-10 rounded-lg text-white bg-[#0062FF]"
           type="submit"
         >
-          {isSubmiting ? "Loading" : "Submites"}
+          Sign Up
         </button>
-
-        {isSubmitSuccessful && <p className="text-green-500">Submited</p>}
+        {isSubmitSuccessful && (
+          <div className="flex justify-center items-center">
+            <p className=" text-green-600 text-shadow-lg tracking-wider flex justify-center items-center text-black text-lg font-bold">
+              Submited
+            </p>
+          </div>
+        )}
       </form>
       {/* Login Link if already user have */}
       <br />

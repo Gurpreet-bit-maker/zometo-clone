@@ -1,14 +1,21 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-
+import { useState, useContext, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import userAuthentication from "../context/authentication/authenticationCreate";
 export default function Homepage() {
-  let [userAthentication, setAthenticationForm] = useState(false);
+  let { loginData, signUpData } = useContext(userAuthentication);
+  let result = useLocation();
+  let loginstate = result.state;
+
+  console.log(loginstate);
+  useEffect(() => {
+    console.log(loginData);
+    console.log(signUpData);
+  });
 
   return (
     <div className="relative">
-      <h1 className="text-[2.4rem] text-center relative"></h1>
-      {/* booking logo */}
-      {!userAthentication && (
+     
+      {loginData.length <= 0 && signUpData.length <= 0 && (
         <div className="">
           {/* overlay */}
           <div className="fixed inset-0 bg-black/60 z-40"></div>
@@ -17,14 +24,13 @@ export default function Homepage() {
               <img src="/logicIcons/logo (1).png" alt="" />
               {/* Login & Sign Link */}
               <div className="flex flex-col justify-center items-center gap-y-1">
-                <button
-                  onClick={() => setAthenticationForm(!userAthentication)}
-                  className="px-20 tracking-wide  h-10 rounded-2xl bg-[#F2AC06] text-white"
-                >
-                  Login
-                </button>
+                <Link to="/loginpage">
+                  <button className="px-20 tracking-wide  h-10 rounded-2xl bg-[#F2AC06] text-white">
+                    Login
+                  </button>
+                </Link>
 
-                <Link to="signForm">
+                <Link to="/signForm">
                   <button className="px-5 tracking-wide underline h-10 rounded-2xl text-black">
                     Sign
                   </button>
@@ -34,6 +40,9 @@ export default function Homepage() {
           </div>
         </div>
       )}
+
+      {/* booking logo */}
+
       <div className=" flex  flex-col items-center">
         {/*//* Catogiry */}
         <div className="flex gap-x-2 text-2xl">

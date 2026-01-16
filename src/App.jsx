@@ -1,12 +1,7 @@
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  BrowserRouter,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Homepage from "./pages/Homepage";
 import CartsData from "./context/CartsContext/CartsContext";
@@ -20,30 +15,35 @@ import DiningBooked from "./pages/Food-Obtions/DiningBooked";
 import Takesinglefood from "./pages/Food-Obtions/Takesinglefood";
 import Sign from "./pages/FormAuthentication/Sign";
 import Login from "./pages/FormAuthentication/Login";
+import UserData_Authentication from "./context/authentication/Authentication";
 
 function App() {
   return (
     <>
       <CartsData>
         <BrowserRouter>
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Homepage />} />
-            {/* Dining page Routes */}
-            <Route path="/food" element={<DiningRestaurent />} />
-            <Route path="/diningPage" element={<DiningPage />} />
-            <Route path="/diningbooked" element={<DiningBooked />} />
-            {/* Online Orders page Routes */}
-            <Route path="/take-out" element={<TakeOutPerent />} />
-            <Route path="/menuItems" element={<TakeOutMenu />} />
-            <Route path="/ordered" element={<Ordered />} />
-            <Route path="/quantity" element={<Takesinglefood />} />
-            {/* Sign Form Page Route */}
-            <Route path="/signForm" element={<Sign />} />
-            {/* Login Form Page Route */}
-            <Route path="/loginpage" element={<Login />} />
-          </Routes>
-          <IconsRoute />
+          <UserData_Authentication>
+            <Navbar />
+
+            <Routes>
+              <Route path="/" element={<Homepage />} />
+              {/* Dining page Routes */}
+              <Route path="/food" element={<DiningRestaurent />} />
+              <Route path="/diningPage" element={<DiningPage />} />
+              <Route path="/diningbooked" element={<DiningBooked />} />
+              {/* Online Orders page Routes */}
+              <Route path="/take-out" element={<TakeOutPerent />} />
+              <Route path="/menuItems" element={<TakeOutMenu />} />
+              <Route path="/ordered" element={<Ordered />} />
+              <Route path="/quantity" element={<Takesinglefood />} />
+              {/* Sign Form Page Route */}
+              <Route path="/signForm" element={<Sign />} />
+              {/* Login Form Page Route */}
+              <Route path="/loginpage" element={<Login />} />
+            </Routes>
+
+            <IconsRoute />
+          </UserData_Authentication>
         </BrowserRouter>
       </CartsData>
     </>
