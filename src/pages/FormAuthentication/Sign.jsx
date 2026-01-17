@@ -44,15 +44,15 @@ export default function Sign() {
   let password = watch("re_password");
   //   console.log(handleSubmit);
   return (
-    <div className="h-150 bg-green-50 py-5 shadow-lg w-full flex flex-col justify-center items-center">
+    <div className="h-150 md:h-200 md:border bg-green-50 py-5 shadow-lg w-full flex flex-col justify-center items-center">
       <form
-        className="flex flex-col w-70 gap-y-5"
+        className="flex flex-col w-70 gap-y-5  md:w-130 md:h-150 md:justify-center md:items-center"
         action=""
         onSubmit={handleSubmit(submitData)}
       >
-        <h1 className="text-[28px] font-bold">Sign Up</h1>
+        <h1 className="text-[28px] md:text-[40px] font-bold ">Sign Up</h1>
         <input
-          className="border h-10 rounded-lg pl-5 w-full"
+          className="border h-10 rounded-lg pl-5 w-full md:w-110 md:h-15 md:text-2xl"
           type="text"
           placeholder="Username"
           {...register(
@@ -65,7 +65,7 @@ export default function Sign() {
           <p className="text-yellow-400">{errors.username.message}</p>
         )}
         <input
-          className="border h-10 rounded-lg pl-5 w-full"
+          className="border h-10 rounded-lg pl-5 w-full md:w-110 md:h-15 md:text-2xl"
           type="email"
           placeholder="Email"
           {...register("email", { required: "email required" })}
@@ -74,7 +74,7 @@ export default function Sign() {
           <p className="text-yellow-400">{errors.email.message}</p>
         )}
         <input
-          className="border h-10 rounded-lg pl-5 w-full"
+          className="border h-10 rounded-lg pl-5 w-full md:w-110 md:h-15 md:text-2xl"
           type="number"
           placeholder="Phone number"
           {...register(
@@ -87,7 +87,7 @@ export default function Sign() {
           <p className="text-yellow-400">{errors.phone.message}</p>
         )}
         <input
-          className="border h-10 rounded-lg pl-5 w-full"
+          className="border h-10 rounded-lg pl-5 w-full md:w-110 md:h-15 md:text-2xl"
           type="password"
           placeholder="Confirm Re-Password"
           {...register(
@@ -103,7 +103,7 @@ export default function Sign() {
           <p className="text-yellow-400">{errors.re_password.message}</p>
         )}
         <input
-          className="border h-10 rounded-lg pl-5 w-full"
+          className="border h-10 rounded-lg pl-5 w-full md:w-110 md:h-15 md:text-2xl"
           type="password"
           placeholder="Password"
           {...register("password", {
@@ -118,7 +118,7 @@ export default function Sign() {
           <p className="text-yellow-400">{errors.password.message}</p>
         )}
         <button
-          className="border h-10 rounded-lg text-white bg-[#0062FF]"
+          className="border md:w-110 h-10 md:h-15 md:text-2xl rounded-lg text-white bg-[#0062FF]"
           type="submit"
         >
           Sign Up
@@ -139,7 +139,7 @@ export default function Sign() {
         <div className=" text-gray-500 w-30 border ml-1"></div>
       </div>
       <div>
-        <p>
+        <p className="md:text-2xl">
           Already have an account ?
           <Link to="/loginpage">
             <span className="text-blue-600 font-bold underline"> Log In</span>
