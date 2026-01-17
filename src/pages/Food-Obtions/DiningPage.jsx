@@ -1,5 +1,7 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import CartContext from "../../context/CartsContext/CartCreateContext";
+import userAuthentication from "../../context/authentication/authenticationCreate";
+
 import { useContext, useEffect, useState } from "react";
 import * as React from "react";
 // import Grid from "@mui/material/Grid";
@@ -9,11 +11,15 @@ import Snackbar from "@mui/material/Snackbar";
 
 export default function DiningPage() {
   let { DiningRestaurents, setD_Res } = useContext(CartContext);
+  let { loginData } = useContext(userAuthentication);
+
   let result = useLocation();
   let [covers, setCovers] = useState(0);
+  let [clickedTime, settimeColor] = useState(null);
+  let [daySlot, setDaySlot] = useState(null);
   //! iss data ko dummy data for conditiona check k liye rkhengay.
   let RestraurentState = result.state;
-
+  // ? you can't memorys  time code
   let _12HoursClock = {
     hour: "2-digit",
     minute: "2-digit",
@@ -25,6 +31,10 @@ export default function DiningPage() {
   let todayDate = Date().slice(4, 15).split(" ").join("-");
   // console.log(todayDate);
   // console.log(time);
+  // ? you can't memorys  time code
+  useEffect(() => {
+    console.log(DiningRestaurents);
+  }, [DiningRestaurents]);
 
   // * ui
   const [state, setState] = React.useState({
@@ -34,7 +44,7 @@ export default function DiningPage() {
   });
   const { vertical, horizontal, open } = state;
   const handleClick = (newState) => () => {
-    if (covers > 0) {
+    if (covers > 0 && loginData.length > 0) {
       setState({ ...newState, open: true });
       setD_Res((prev) =>
         prev.map((m) =>
@@ -45,15 +55,27 @@ export default function DiningPage() {
                 bookingTime: time,
                 bookingDate: todayDate,
                 ...(covers >= 5
-                  ? { ds: "20%", cover: covers }
-                  : { ds: "10%", cover: covers }),
+                  ? {
+                      ds: "20%",
+                      cover: covers,
+                      comeTime: clickedTime,
+                      day: daySlot,
+                    }
+                  : {
+                      ds: "10%",
+                      cover: covers,
+                      comeTime: clickedTime,
+                      day: daySlot,
+                    }),
               }
             : m
         )
       );
       setCovers(0);
+      settimeColor(null);
+      setDaySlot(null);
     } else {
-      alert("Please choose covers");
+      alert("please signUp then Please choose covers ");
     }
   };
   // Pending work do first this delete booking btn
@@ -96,12 +118,14 @@ export default function DiningPage() {
     }
   };
   // datebotton event
+
   let dataBtn = (e) => {
+    setDaySlot(e.target.innerText);
     e.stopPropagation();
     console.log(e.target.innerText);
   };
   // timing event
-  let [clickedTime, settimeColor] = useState(null);
+
   let timingBtn = (e) => {
     settimeColor(e.target.innerText);
     e.stopPropagation();
@@ -112,40 +136,44 @@ export default function DiningPage() {
     console.log(clickedTime);
   });
   return (
-    <div className="p-1  h-180">
+    <div className="p-1  h-auto mb-10">
       <div className=" py-5 ">
         <div className="relative flex flex-col justify-center items-center">
           <img className="w-90" src="/RestroImg/restaurant.png" alt="" />
-          <h1 className="absolute text-white bottom-2 left-10 text-black tracking-wider text-center text-[27px]">
+          <h1 className="absolute text-white text-shadow-lg bottom-2 left-10 text-black tracking-wider text-center text-[27px]">
             {RestraurentState.name}
           </h1>
         </div>
+        {/* discount details */}
+        <div className="text-center  mt-3">
+          <span className=" bg-red-600 text-white shadow-lg  px-2 py-1 rounded-lg">
+            5 covers get 20% discount
+          </span>
+        </div>
         {/* days booking */}
-        <h2 className="ml-2">Date</h2>
+        <h2 className="ml-2 text-lg">Date</h2>
         <div className="flex gap-x-5 pl-5 pt-2 ">
-          <div
-            onClick={(e) => dataBtn(e)}
-            className="border-1 border-black px-8 py-1 rounded-lg bg-[#F2AC06] text-white "
-          >
-            jan mon 5
-          </div>
-          <div
-            onClick={(e) => dataBtn(e)}
-            className="border-1 border-black px-8 py-1 rounded-lg bg-[#F2AC06] text-white "
-          >
-            jan tue 6
-          </div>
-          <div
-            onClick={(e) => dataBtn(e)}
-            className="border-1 border-black px-8 py-1 rounded-lg bg-[#F2AC06] text-white "
-          >
-            jan wed 7
-          </div>
+          {["Jan mon 5", `Jan tue 6`, "Jan wed 7"].map((day, i) => {
+            return (
+              <div key={i}>
+                <button
+                  onClick={(e) => dataBtn(e)}
+                  className={`border-1 border-black px-3 py-1 rounded-lg w-30 h-12 ${
+                    daySlot == day
+                      ? "bg-black/80 text-white font-bold text-shadow-lg tracking-wide"
+                      : "bg-[#F2AC06]"
+                  }`}
+                >
+                  {day}
+                </button>
+              </div>
+            );
+          })}
         </div>
 
         {/* timing */}
         <br />
-        <h2 className="ml-2">Timing</h2>
+        <h2 className="ml-2 text-lg">Timing</h2>
 
         <div className="flex flex-wrap justify-center gap-x-2 gap-y-2 pt-1 pb-5 shadow-lg ">
           {/* <div
@@ -208,8 +236,10 @@ export default function DiningPage() {
               <div key={i}>
                 <button
                   onClick={(e) => timingBtn(e)}
-                  className={`px-2 py-1 rounded-sm text-black w-20 shadow-lg border ${
-                    clickedTime == day ? "bg-blue-500 text-white font-bold" : "bg-white"
+                  className={`px-2 py-1 rounded-sm text-black w-22 shadow-lg border h-20 ${
+                    clickedTime == day
+                      ? "bg-blue-500 text-white font-bold"
+                      : "bg-white"
                   }`}
                 >
                   {day}
@@ -220,17 +250,20 @@ export default function DiningPage() {
         </div>
 
         {/* covers */}
-        <div className="flex gap-x-2 justify-around border pr-3 mt-5">
+        <h1 className="text-lg ml-2">Guest</h1>
+        <div className="flex gap-x-2 justify-around borde pr-3 mt-5">
           <button
             onClick={increment}
-            className="border w-6 h-6 rounded-4xl flex justify-center items-center  bg-white text-lg"
+            className="border bg-blue-500 w-9 h-9 rounded-4xl flex justify-center items-center text-white text-lg"
           >
             +
           </button>
-          <p>{covers}</p>
+          <p className="bg-gray-300 w-50 text-center flex  justify-center items-center text-xl rounded-lg">
+            {covers}
+          </p>
           <button
             onClick={decrement}
-            className="border w-6 h-6 rounded-4xl flex justify-center items-center pb-1 bg-white text-2xl"
+            className="border w-9 h-9 rounded-4xl flex justify-center items-center pb-1 bg-blue-500 text-white text-2xl"
           >
             -
           </button>
@@ -266,12 +299,6 @@ export default function DiningPage() {
               key={vertical + horizontal}
             />
           </Box>
-        </div>
-        {/* discount details */}
-        <div className="text-center  mt-2">
-          <span className=" bg-red-300 text-white shadow-lg  px-2 py-1 rounded-lg">
-            5 covers get 20% discount
-          </span>
         </div>
       </div>
       {/* booked Restaurents */}

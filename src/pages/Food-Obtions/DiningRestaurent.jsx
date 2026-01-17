@@ -54,7 +54,7 @@ export default function Indining() {
   // * menuItems
 
   return (
-    <div>
+    <div className="h-auto mb-30">
       <div className="flex gap-x-1 m-auto w-fit">
         <select
           className="border"
