@@ -7,21 +7,17 @@ export default function Homepage() {
   let result = useLocation();
   let loginstate = result.state;
 
-  // if (loginData.length <= 0 || signUpData.length <= 0) {
-  //   alert("please sign up or login first");
-  // }
-
   return (
     <div className="relative">
       {/* booking logo */}
 
       <div className=" flex  flex-col items-center">
         {/*//* Catogiry */}
-        <div className="flex gap-x-2 text-2xl">
+        <div className="flex gap-x-2 md:gap-x-10 text-2xl">
           <Link to="/food">
             <button
               type="button"
-              className="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-base text-lg px-4 py-2.5 text-center leading-5"
+              className="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-base text-lg px-4 py-2.5 text-center leading-5 md:w-40 md:h-15 md:text-[25px]"
             >
               Dining
             </button>
@@ -30,7 +26,7 @@ export default function Homepage() {
           <Link to="/take-out">
             <button
               type="button"
-              className="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-base text-lg px-4 py-2.5 text-center leading-5"
+              className="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-base text-lg px-4 py-2.5 text-center leading-5 md:w-40 md:h-15 md:text-[25px]"
             >
               Take Out
             </button>
@@ -58,19 +54,19 @@ export default function Homepage() {
           </div>
         </div>
         {/* //* text */}
-        <div className=" px-5 relative  h-120 shadow-sm flex justify-center gap-y-2 items-center  ">
+        <div className=" px-5 relative  h-120 shadow-sm flex justify-center gap-y-2 items-center md:h-180 ">
           <div className="text-center px-5">
-            <h1 className="text-[#EF4F5F] text-2xl">
+            <h1 className="text-[#EF4F5F] text-2xl md:text-[35px]">
               Better food for more people
             </h1>
-            <h3>
+            <h3 className="md:text-2xl md:leading-12">
               For over a decade, we’ve enabled our customers to discover new
               tastes, delivered right to their doorstep
             </h3>
           </div>
           <div className=" absolute top-5 right-10 ">
             <img
-              className="w-30"
+              className="w-30 md:w-60"
               src="https://b.zmtcdn.com/data/o2_assets/b4f62434088b0ddfa9b370991f58ca601743060218.png"
               alt=""
             />
