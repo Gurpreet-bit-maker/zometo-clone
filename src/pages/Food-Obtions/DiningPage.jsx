@@ -92,10 +92,10 @@ export default function DiningPage() {
     <Box sx={{ display: "flex", justifyContent: "center" }}>
       {!state.open ? (
         <Button
-          sx={{ backgroundColor: "black" }}
+          sx={{ backgroundColor: "black", color: "white", width: "20rem" }}
           onClick={handleClick({ vertical: "top", horizontal: "center" })}
         >
-          Book Now
+          Book A Table
         </Button>
       ) : (
         <Button
@@ -146,19 +146,19 @@ export default function DiningPage() {
         </div>
         {/* discount details */}
         <div className="text-center  mt-3">
-          <span className=" bg-red-600 text-white shadow-lg  px-2 py-1 rounded-lg">
+          <span className=" bg-red-600 text-white shadow-lg  px-2 py-1 rounded-lg text-lg">
             5 covers get 20% discount
           </span>
         </div>
         {/* days booking */}
         <h2 className="ml-2 text-lg">Date</h2>
-        <div className="flex gap-x-5 pl-5 pt-2 ">
+        <div className="flex gap-x-5 justify-center pt-2 ">
           {["Jan mon 5", `Jan tue 6`, "Jan wed 7"].map((day, i) => {
             return (
               <div key={i}>
                 <button
                   onClick={(e) => dataBtn(e)}
-                  className={`border-1 border-black px-3 py-1 rounded-lg w-30 h-12 ${
+                  className={`border-1 border-black px-3 py-1 rounded-lg w-30 h-12 text-lg ${
                     daySlot == day
                       ? "bg-black/80 text-white font-bold text-shadow-lg tracking-wide"
                       : "bg-[#F2AC06]"
@@ -236,7 +236,7 @@ export default function DiningPage() {
               <div key={i}>
                 <button
                   onClick={(e) => timingBtn(e)}
-                  className={`px-2 py-1 rounded-sm text-black w-22 shadow-lg border h-20 ${
+                  className={`px-2 py-1 rounded-sm text-black w-22 shadow-lg border h-20 text-lg ${
                     clickedTime == day
                       ? "bg-blue-500 text-white font-bold"
                       : "bg-white"
@@ -254,7 +254,7 @@ export default function DiningPage() {
         <div className="flex gap-x-2 justify-around borde pr-3 mt-5">
           <button
             onClick={increment}
-            className="border bg-blue-500 w-9 h-9 rounded-4xl flex justify-center items-center text-white text-lg"
+            className="border bg-blue-500 w-11 h-11 rounded-4xl flex justify-center items-center text-white text-lg"
           >
             +
           </button>
@@ -263,7 +263,7 @@ export default function DiningPage() {
           </p>
           <button
             onClick={decrement}
-            className="border w-9 h-9 rounded-4xl flex justify-center items-center pb-1 bg-blue-500 text-white text-2xl"
+            className="border w-11 h-11 rounded-4xl flex justify-center items-center pb-1 bg-blue-500 text-white text-2xl"
           >
             -
           </button>

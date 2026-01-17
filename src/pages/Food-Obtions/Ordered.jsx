@@ -58,11 +58,11 @@ export default function Ordered() {
 
   return (
     <div className="bg-white h-170 ">
-      <div className=" py-5">
+      <div className=" py-10">
         {onlineOrdersList.length > 0 ? (
           onlineOrdersList.map((item, index) => {
             return (
-              <div className="  shadow-2xl" key={index}>
+              <div className="  shadow-2xl " key={index}>
                 <div className=" flex justify-between px-5 text-[22px] ">
                   <div className="flex items-center">
                     <img className="w-5 h-5 mr-1" src={item.imagelogo} alt="" />
@@ -88,15 +88,15 @@ export default function Ordered() {
           </div>
         )}
         {/* item details */}
-        <div className="bg-[#FDE9EA] mt-3  flex justify-between px-5 py-4">
-          <div className="text-gray-600 text-[18px]">
+        <div className="bg-[#FDE9EA] mt-3  flex justify-between  px-5 py-4">
+          <div className="text-gray-600 text-[18px] flex flex-col gap-y-2 ">
             <p>Item Total</p>
             <p>Delivery Charges</p>
             <p>GST Amount</p>
             <strong>GRAND TOTAL</strong>
           </div>
           {/*//! TODO: work pending */}
-          <div className="text-gray-500 text-[18px]">
+          <div className="text-gray-500 text-[18px] flex flex-col gap-y-2">
             <p>{withQntyAmt}</p>
             <p>0</p>
             <p>{gstAmount}</p>

@@ -7,9 +7,6 @@ export default function DiningBooked() {
 
   return (
     <div className="mb-20 h-auto">
-      <h1 className="font-bold text-center text-2xl">
-        Your all Dining Bookings
-      </h1>
       {DiningRestaurents.map((m) => {
         {
           /* <p>{loginData[0].username}</p> */
@@ -45,8 +42,7 @@ export default function DiningBooked() {
                 <p>
                   {m.bookingDate} | {m.bookingTime}
                 </p>
-                 <p>{m.comeTime}</p>
-                
+                <p>{m.comeTime}</p>
               </div>
             </div>
             {/* guest and floor  */}
@@ -68,7 +64,7 @@ export default function DiningBooked() {
                   )}
                 </p>
                 <p>not floor</p>
-               <p>None</p>
+                <p>None</p>
                 <p>{m.location}</p>
               </div>
             </div>
